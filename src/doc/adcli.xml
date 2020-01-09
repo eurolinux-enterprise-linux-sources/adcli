@@ -1,0 +1,684 @@
+<?xml version='1.0'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+	"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+
+<refentry id="adcli">
+
+<refentryinfo>
+	<title>adcli</title>
+	<productname>realmd</productname>
+	<authorgroup>
+		<author>
+			<contrib>Maintainer</contrib>
+			<firstname>Stef</firstname>
+			<surname>Walter</surname>
+			<email>stefw@redhat.com</email>
+		</author>
+	</authorgroup>
+</refentryinfo>
+
+<refmeta>
+	<refentrytitle>adcli</refentrytitle>
+	<manvolnum>8</manvolnum>
+	<refmiscinfo class="manual">System Commands</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+	<refname>adcli</refname>
+	<refpurpose>Tool for performing actions on an Active Directory domain</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+	<cmdsynopsis>
+		<command>adcli info</command>
+		<arg choice="plain">domain.example.com</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli join</command>
+		<arg choice="plain">domain.example.com</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli update</command>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli create-user</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">user</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli delete-user</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">user</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli create-group</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">user</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli delete-group</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">user</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli add-member</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">group</arg>
+		<arg choice="plain" rep="repeat">user</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli remove-member</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">group</arg>
+		<arg choice="plain" rep="repeat">user</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli preset-computer</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain" rep="repeat">computer</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli reset-computer</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">computer</arg>
+	</cmdsynopsis>
+	<cmdsynopsis>
+		<command>adcli delete-computer</command>
+		<arg choice="opt">--domain=domain.example.com</arg>
+		<arg choice="plain">computer</arg>
+	</cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1 id='general_overview'>
+	<title>General Overview</title>
+	<para><command>adcli</command> is a command line tool that
+	can perform actions in an Active Directory domain. Among other things
+	it can be used to join a computer to a domain.</para>
+
+	<para>See the various sub commands below. The following global options
+	can be used:</para>
+
+	<variablelist>
+		<varlistentry>
+			<term><option>-D, --domain=<parameter>domain</parameter></option></term>
+			<listitem><para>The domain to connect to. If a domain is
+			not specified then the domain part of the local computer's
+			host name is used.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-R, --domain-realm=<parameter>REALM</parameter></option></term>
+			<listitem><para>Kerberos realm for the domain. If not
+			specified then the upper cased domain name is
+			used.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-S, --domain-controller=<parameter>server</parameter></option></term>
+			<listitem><para>Connect to a specific domain controller.
+			If not specified then an appropriate domain controller
+			is automatically discovered.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-C, --login-ccache=<parameter>/path/to/file</parameter></option></term>
+			<listitem><para>Use the specified kerberos credential
+			cache to authenticate with the domain.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-U, --login-user=<parameter>User</parameter></option></term>
+			<listitem><para>Use the specified user account to
+			authenticate with the domain. If not specified then
+			the name 'Administrator' will be used.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--no-password</option></term>
+			<listitem><para>Don't show prompts for or read a
+			password from input.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-W, --prompt-password</option></term>
+			<listitem><para>Prompt for a password if necessary.
+			This is the default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--stdin-password</option></term>
+			<listitem><para>Read a password from stdin input instead
+			of prompting for a password.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-v, --verbose</option></term>
+			<listitem><para>Run in verbose mode with debug
+			output.</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+</refsect1>
+
+<refsect1 id='querying'>
+	<title>Querying Domain Information</title>
+
+	<para><command>adcli info</command> displays discovered information
+	about an Active Directory domain or an Active Directory domain
+	controller.</para>
+
+<programlisting>
+$ adcli info domain.example.com
+...
+</programlisting>
+
+<programlisting>
+$ adcli info --domain-controller=dc.domain.example.com
+...
+</programlisting>
+
+	<para><command>adcli info</command> will output as much information as
+	it can about the domain. The information is designed to be both machine
+	and human readable. The command will exit with a non-zero exit code
+	if the domain does note exist or cannot be reached.</para>
+
+	<para>To show domain info for a specific domain controller use the
+	<option>--domain-controller</option> option to specify which domain
+	controller to query.</para>
+
+	<para>Use the <option>--verbose</option> option to show details of how
+	the domain is discovered and queried. Many of the global options, in
+	particular authentication options, are not usable with the
+	<command>adcli info</command> command.</para>
+</refsect1>
+
+<refsect1 id='joining'>
+	<title>Joining the Local Machine to a Domain</title>
+
+	<para><command>adcli join</command> creates a computer account in the
+	domain for the local machine, and sets up a keytab for the machine.
+	It does not configure an authentication service (such as
+	<command>sssd</command>).</para>
+
+<programlisting>
+$ adcli join domain.example.com
+Password for Administrator:
+</programlisting>
+
+	<para>In addition to the global options, you can specify the following
+	options to control how this operation is done.</para>
+
+	<variablelist>
+		<varlistentry>
+			<term><option>-N, --computer-name=<parameter>computer</parameter></option></term>
+			<listitem><para>The short non-dotted name of the computer
+			account that will be created in the domain. If not specified
+			then the first portion of the <option>--host-fqdn</option>
+			is used.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-O, --domain-ou=<parameter>OU=xxx</parameter></option></term>
+			<listitem><para>The full distinguished name of the OU in
+			which to create the computer account. If not specified
+			then the computer account will be created in a default
+			location.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-H, --host-fqdn=<parameter>host</parameter></option></term>
+			<listitem><para>Override the local machine's fully qualified
+			domain name. If not specified the local machine's hostname
+			will be retrieved via <function>gethostname()</function>.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-K, --host-keytab=<parameter>/path/to/keytab</parameter></option></term>
+			<listitem><para>Specify the path to the host keytab where
+			host credentials will be written after a successful join
+			operation. If not specified the default location will be
+			used, usually <filename>/etc/krb5.keytab</filename>.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--login-type=<parameter>{computer|user}</parameter></option></term>
+			<listitem><para>Specify the type of authentication that
+			will be performed before creating the machine account in
+			the domain. If set to 'computer' then the computer must
+			already have a preset account in the domain. If not
+			specified and none of the other <option>--login-xxx</option>
+			arguments have been specified, then will try both
+			'computer' and 'user' authentication.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-name=<parameter>name</parameter></option></term>
+			<listitem><para>Set the operating system name on the computer
+			account. The default depends on where adcli was  built, but
+			is usually something like 'linux-gnu'.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-service-pack=<parameter>pack</parameter></option></term>
+			<listitem><para>Set the operating system service pack on the computer
+			account. Not set by default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-version=<parameter>version</parameter></option></term>
+			<listitem><para>Set the operating system version on the computer
+			account. Not set by default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--service-name=<parameter>service</parameter></option></term>
+			<listitem><para>Additional service name for a kerberos
+			principal to be created on the computer account. This
+			option may be specified multiple times.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--user-principal=<parameter>host/name@REALM</parameter></option></term>
+			<listitem><para>Set the userPrincipalName field of the
+			computer account to this kerberos principal. If you omit
+			the value for this option, then a principal will be set
+			in the form of <code>host/host.example.com@REALM</code></para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--one-time-password</option></term>
+			<listitem><para>Specify a one time password for a preset
+			computer account. This is equivalent to using
+			<option>--login-type=computer</option> and providing a
+			password as input.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--show-details</option></term>
+			<listitem><para>After a successful join print out information
+			about join operation. This is output in a format that should
+			be both human and machine readable.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--show-password</option></term>
+			<listitem><para>After a successful join print out the computer
+			machine account password. This is output in a format that should
+			be both human and machine readable.</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+</refsect1>
+
+<refsect1 id='updating'>
+	<title>Updating the machine account password and other attributes</title>
+
+	<para><command>adcli update</command> updates the password of the computer
+	account on the domain controller for the local machine, write the new
+	keys to the keytab and removes older keys. It keeps the previous key on purpose
+	because AD will need some time to replicate the new key to all DCs hence the
+	previous key might still be used.
+	</para>
+
+<programlisting>
+$ adcli update
+</programlisting>
+
+	<para>If used with a credential cache other attributes of the computer
+	account can be changed as well if the principal has sufficient
+	privileges.</para>
+
+<programlisting>
+$ kinit Administrator
+$ adcli update --login-ccache=/tmp/krbcc_123
+</programlisting>
+
+	<para>In addition to the global options, you can specify the following
+	options to control how this operation is done.</para>
+
+	<variablelist>
+		<varlistentry>
+			<term><option>-N, --computer-name=<parameter>computer</parameter></option></term>
+			<listitem><para>The short non-dotted name of the computer
+			account that will be created in the domain. If not specified
+			it will be retrieved from the keytab entries.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-H, --host-fqdn=<parameter>host</parameter></option></term>
+			<listitem><para>The local machine's fully qualified
+			domain name. If not specified the local machine's hostname
+			will be retrieved from the keytab entries.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-K, --host-keytab=<parameter>/path/to/keytab</parameter></option></term>
+			<listitem><para>Specify the path to the host keytab where
+			current host credentials are stored and the new ones
+			will be written to.  If not specified the default
+			location will be used, usually
+			<filename>/etc/krb5.keytab</filename>.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-name=<parameter>name</parameter></option></term>
+			<listitem><para>Set the operating system name on the computer
+			account. Not set by default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-service-pack=<parameter>pack</parameter></option></term>
+			<listitem><para>Set the operating system service pack on the computer
+			account. Not set by default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-version=<parameter>version</parameter></option></term>
+			<listitem><para>Set the operating system version on the computer
+			account. Not set by default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--service-name=<parameter>service</parameter></option></term>
+			<listitem><para>Additional service name for a Kerberos
+			principal to be created on the computer account. This
+			option may be specified multiple times.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--user-principal=<parameter>host/name@REALM</parameter></option></term>
+			<listitem><para>Set the userPrincipalName field of the
+			computer account to this Kerberos principal.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--computer-password-lifetime=<parameter>lifetime</parameter></option></term>
+			<listitem><para>Only update the password of the
+			computer account if it is older than the lifetime given
+			in days. By default the password is updated if it is
+			older than 30 days.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--show-details</option></term>
+			<listitem><para>After a successful join print out information
+			about join operation. This is output in a format that should
+			be both human and machine readable.</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+</refsect1>
+
+<refsect1 id='create_user'>
+	<title>Creating a User</title>
+
+	<para><command>adcli create-user</command> creates a new user account
+	in the domain.</para>
+
+<programlisting>
+$ adcli create-user Fry --domain=domain.example.com \
+	--display-name="Philip J. Fry" --mail=fry@domain.example.com
+</programlisting>
+
+	<para>In addition to the global options, you can specify the following
+	options to control how the user is created.</para>
+
+	<variablelist>
+		<varlistentry>
+			<term><option>--display-name=<parameter>"Name"</parameter></option></term>
+			<listitem><para>Set the <code>displayName</code> attribute
+			of the new created user account.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-O, --domain-ou=<parameter>OU=xxx</parameter></option></term>
+			<listitem><para>The full distinguished name of the OU in
+			which to create the user account. If not specified
+			then the computer account will be created in a default
+			location.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--mail=<parameter>email@domain.com</parameter></option></term>
+			<listitem><para>Set the <code>mail</code> attribute of
+			the new created user account. This attribute may be
+			specified multiple times.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--unix-home=<parameter>/home/user</parameter></option></term>
+			<listitem><para>Set the <code>unixHomeDirectory</code> attribute of
+			the new created user account, which should be an absolute
+			path to the user's home directory.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--unix-gid=<parameter>111</parameter></option></term>
+			<listitem><para>Set the <code>gidNumber</code> attribute of
+			the new created user account, which should be the user's
+			numeric primary group id.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--unix-shell=<parameter>/bin/shell</parameter></option></term>
+			<listitem><para>Set the <code>loginShell</code> attribute of
+			the new created user account, which should be the user's
+			numeric primary user id.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--unix-uid=<parameter>111</parameter></option></term>
+			<listitem><para>Set the <code>uidNumber</code> attribute of
+			the new created user account, which should be a path to
+			a valid shell.</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+</refsect1>
+
+<refsect1 id='delete_user'>
+	<title>Deleting a User</title>
+
+	<para><command>adcli delete-user</command> deletes a user account from
+	the domain.</para>
+
+<programlisting>
+$ adcli delete-user Fry --domain=domain.example.com
+</programlisting>
+
+	<para>The various global options can be used.</para>
+
+</refsect1>
+
+
+<refsect1 id='create_group'>
+	<title>Creating a Group</title>
+
+	<para><command>adcli create-group</command> creates a new group in the
+	domain.</para>
+
+<programlisting>
+$ adcli create-group Pilots --domain=domain.example.com \
+	--description="Group for all pilots"
+</programlisting>
+
+	<para>In addition to the global options, you can specify the following
+	options to control how the group is created.</para>
+
+	<variablelist>
+		<varlistentry>
+			<term><option>--description=<parameter>"text"</parameter></option></term>
+			<listitem><para>Set the <code>description</code> attribute
+			of the new created group.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>-O, --domain-ou=<parameter>OU=xxx</parameter></option></term>
+			<listitem><para>The full distinguished name of the OU in
+			which to create the group. If not specified
+			then the group will be created in a default
+			location.</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+</refsect1>
+
+<refsect1 id='delete_group'>
+	<title>Deleting a Group</title>
+
+	<para><command>adcli delete-group</command> deletes a group from
+	the domain.</para>
+
+<programlisting>
+$ adcli delete-group Pilots --domain=domain.example.com
+</programlisting>
+
+	<para>The various global options can be used.</para>
+
+</refsect1>
+
+<refsect1 id='add_group_member'>
+	<title>Adding a Member to a Group</title>
+
+	<para><command>adcli add-member</command> adds one or more users to a
+	group in the domain. The group is specified first, and then the various
+	users to be added.</para>
+
+<programlisting>
+$ adcli add-member --domain=domain.example.com Pilots Leela Scruffy
+</programlisting>
+
+	<para>The various global options can be used.</para>
+
+	<para></para>
+
+</refsect1>
+
+<refsect1 id='remove_group_member'>
+	<title>Removing a Member from a Group</title>
+
+	<para><command>adcli remove-member</command> removes a user from  a group
+	in the domain. The group is specified first, and then the various users
+	to be removed.</para>
+
+<programlisting>
+$ adcli remove-member --domain=domain.example.com Pilots Scruffy
+</programlisting>
+
+	<para>The various global options can be used.</para>
+
+</refsect1>
+
+<refsect1 id='preset_computer_account'>
+	<title>Preset Computer Accounts</title>
+
+	<para><command>adcli preset-computer</command> pre-creates one or more
+	computer accounts in the domain for machines to later use when joining
+	the domain. By doing this machines can join using a one time password
+	or automatically without a password.</para>
+
+<programlisting>
+$ adcli preset-computer --domain=domain.example.com \
+	host1.example.com host2
+Password for Administrator:
+</programlisting>
+
+	<para>If the computer names specified contain dots, then they are
+	treated as fully qualified host names, otherwise they are treated
+	as short computer names. The computer accounts must not already
+	exist.</para>
+
+	<para>In addition to the global options, you can specify the following
+	options to control how this operation is done.</para>
+
+	<variablelist>
+		<varlistentry>
+			<term><option>-O, --domain-ou=<parameter>OU=xxx</parameter></option></term>
+			<listitem><para>The full distinguished name of the OU in
+			which to create the computer accounts. If not specified
+			then the computer account will be created in a default
+			location.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--one-time-password</option></term>
+			<listitem><para>Specify a one time password to use when
+			presetting the computer accounts. If not specified then
+			a default password will be used, which allows for later
+			automatic joins.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-name=<parameter>name</parameter></option></term>
+			<listitem><para>Set the operating system name on the computer
+			account. The default depends on where adcli was  built, but
+			is usually something like 'linux-gnu'.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-service-pack=<parameter>pack</parameter></option></term>
+			<listitem><para>Set the operating system service pack on the computer
+			account. Not set by default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--os-version=<parameter>version</parameter></option></term>
+			<listitem><para>Set the operating system version on the computer
+			account. Not set by default.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--service-name=<parameter>service</parameter></option></term>
+			<listitem><para>Additional service name for a kerberos
+			principal to be created on the computer account. This
+			option may be specified multiple times.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><option>--user-principal</option></term>
+			<listitem><para>Set the userPrincipalName field of the
+			computer account to this kerberos principal in the form
+			of <code>host/host.example.com@REALM</code></para></listitem>
+		</varlistentry>
+	</variablelist>
+
+</refsect1>
+
+<refsect1 id='reset_computer_account'>
+	<title>Reset Computer Account</title>
+
+	<para><command>adcli reset-computer</command> resets a computer account
+	in the domain. If a the appropriate machine is currently joined to the
+	domain, then its membership will be broken. The account must already
+	exist.</para>
+
+<programlisting>
+$ adcli reset-computer --domain=domain.example.com host2
+</programlisting>
+
+	<para>If the computer names specified contain dots, then they are
+	treated as fully qualified host names, otherwise they are treated
+	as short computer names.</para>
+
+	<para>In addition to the global options, you can specify the following
+	options to control how this operation is done.</para>
+
+	<variablelist>
+		<varlistentry>
+			<term><option>--login-type=<parameter>{computer|user}</parameter></option></term>
+			<listitem><para>Specify the type of authentication that
+			will be performed before creating the machine account in
+			the domain. If set to 'computer' then the computer must
+			already have a preset account in the domain. If not
+			specified and none of the other <option>--login-xxx</option>
+			arguments have been specified, then will try both
+			'computer' and 'user' authentication.</para></listitem>
+		</varlistentry>
+	</variablelist>
+
+</refsect1>
+
+<refsect1 id='delete_computer_account'>
+	<title>Delete Computer Account</title>
+
+	<para><command>adcli delete-computer</command> deletes a computer account
+	in the domain. The account must already exist.</para>
+
+<programlisting>
+$ adcli delete-computer --domain=domain.example.com host2
+Password for Administrator:
+</programlisting>
+
+	<para>If the computer name contains a dot, then it is
+	treated as fully qualified host name, otherwise it is treated
+	as short computer name.</para>
+
+	<para>If no computer name is specified, then the host name of the
+	computer adcli is running on is used, as returned by
+	<literal>gethostname()</literal>.</para>
+
+	<para>The various global options can be used.</para>
+
+</refsect1>
+
+<refsect1 id='bugs'>
+	<title>Bugs</title>
+	<para>
+		Please send bug reports to either the distribution bug tracker
+		or the upstream bug tracker at
+		<ulink url="https://bugs.freedesktop.org/enter_bug.cgi?product=realmd&amp;component=adcli">https://bugs.freedesktop.org/enter_bug.cgi?product=realmd&amp;component=adcli</ulink>
+	</para>
+</refsect1>
+
+<refsect1 id='see_also'>
+	<title>See also</title>
+	<simplelist type="inline">
+		<member><citerefentry><refentrytitle>realmd</refentrytitle><manvolnum>8</manvolnum></citerefentry></member>
+		<member><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></member>
+		<member><citerefentry><refentrytitle>sssd</refentrytitle><manvolnum>8</manvolnum></citerefentry></member>
+	</simplelist>
+	<para>
+		Further details available in the realmd online documentation at
+		<ulink url="http://www.freedesktop.org/software/realmd/">http://www.freedesktop.org/software/realmd/</ulink>
+	</para>
+</refsect1>
+
+</refentry>

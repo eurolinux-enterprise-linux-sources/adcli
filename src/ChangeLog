@@ -1,0 +1,2529 @@
+# Generate automatically. Do not edit.
+
+commit 89ff7a711e2c0490131a5c1964e0d18acd530a76
+Author: Stef Walter <stefw@redhat.com>
+Date:   2016-01-19
+
+    Bump version number
+
+ NEWS         | 4 ++++
+ configure.ac | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+commit 38050e8b593f9587fa5759c6bb717063aa22063a
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2016-01-18
+
+    Add missing - in adcli man page
+    
+    https://bugzilla.redhat.com/show_bug.cgi?id=1296971
+
+ doc/adcli.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 650e5d33ef31437a049fb454ad3dc5457c56abe7
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2016-01-18
+
+    Force renewal if password lifetime is 0 even with clock skew
+    
+    https://bugzilla.redhat.com/show_bug.cgi?id=1290731
+
+ library/adutil.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+commit 16a6f2e4d28b88bd2d2a1e1e51bde96e8aa0c8ae
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-12-17
+
+    Bump version number for release
+
+ NEWS         | 6 ++++++
+ configure.ac | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+commit 253f37d71f6d42d5055dde6bb17f17805cc3a740
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-11
+
+    update: set login keytab based on command line options
+    
+    This fixes a recent regression introduced by:
+    
+    commit ec1fd29641e9f4638d00e3ccaaa20927d126aa9d
+    Allow additional ccache for updates
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=93400
+
+ tools/computer.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 6747efc6ae5fea6844ae13a6c0c7da3e30db89c1
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-11
+
+    seq_remove: remove redundant NULL check
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=93399
+
+ library/seq.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit aafcc55a6246ba7bcd99ce9dd9f70102dc0f4557
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-11
+
+    tools: Add missing break
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ tools/tools.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 3c0a8e6562a22cd38d9d375ee97857dd83fd8f4d
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-11
+
+    Make sure res is set in prep_kerberos_and_kinit()
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ library/adconn.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit eeceff4fab74afa932f6f54686e110119dbbfa9f
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-11
+
+    Set umask before calling mkstemp()
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ library/adconn.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 8903f339fdf9d06f960cd5bfa05e804a4b1e7507
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-11
+
+    Use reproducible IDs in documentation
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ doc/adcli.xml | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+commit 2ef4256dc4c6024a3a19e4195d6afce88a624e68
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-09
+
+    Call adcli_conn_connect() only once
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ library/adenroll.c | 8 --------
+ 1 file changed, 8 deletions(-)
+
+commit de8c7d6b6f2aec7cab535132cafbc664c19ff418
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-04
+
+    Check host password lifetime
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=93282
+
+ doc/adcli.xml       |  7 ++++++
+ library/adenroll.c  | 63 +++++++++++++++++++++++++++++++++++++++++++++++------
+ library/adenroll.h  |  5 +++++
+ library/adprivate.h |  2 ++
+ library/adutil.c    | 60 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/adutil.h    |  1 +
+ tools/computer.c    | 18 +++++++++++++++
+ 7 files changed, 149 insertions(+), 7 deletions(-)
+
+commit a96e9ef412ad24c06eaa54cf8460bce1a9a7f759
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-08
+
+    doc: add update sub-command to man page
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+
+ doc/adcli.xml | 86 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+
+commit e56592b6516f301a2d28cd91b7a67becc6048eab
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-04
+
+    Increment kvno after password change
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=91185
+
+ library/adenroll.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit eadeb5b04afe11750fbfcf3b8534ab8dbb71a8ca
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-11-30
+
+    Coverity fixes
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=93222
+    
+    Signed-off-by: Stef Walter <stefw@redhat.com>
+     * Revert changes for resource cleanup in unexpected conditions
+       See above bug for explanation.
+     * Some whitespace fixes.
+
+ library/adenroll.c | 20 +++++++++++++-------
+ tools/computer.c   |  6 ++++++
+ tools/entry.c      |  2 ++
+ tools/tools.c      |  6 ++++--
+ 4 files changed, 25 insertions(+), 9 deletions(-)
+
+commit c4891294f76dee86081d3d59aedb560aac4dab0f
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-12-07
+
+    Teach coverity about unexpected preconditions
+    
+    adcli treats unexpected failures (such as most memory allocation failures)
+    differently from expected, possible failures. We don't do cleanup after
+    the former.
+    
+    This patch tells Coverity that we don't expect these code paths to
+    have defined behavior.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=93222
+
+ library/adutil.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 0450a0754d856a43e85bca252c1f35b1bd74c2cf
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-12-07
+
+    library: Don't automatically connect to kerberos
+    
+    For the adconn code, expect that adcli_conn_connect() is called
+    before the shared krb5_context is available.
+    
+    This prevents hard to track bugs with using the shared krb5 context
+    before its profile has been correctly set up.
+
+ library/adconn.c | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
+
+commit ec1fd29641e9f4638d00e3ccaaa20927d126aa9d
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-03
+
+    Allow additional ccache for updates
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+    
+    Signed-off-by: Stef Walter <stefw@redhat.com>
+     * Removed redundant changes for default keytab
+
+ tools/computer.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+commit 4694aa7e8781c70dfe9b2d6b99f13456edd2eb2a
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-03
+
+    Allow domain option for updates
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ tools/computer.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit a518423ad17ada50d9f9957893f5c1e60f5fe93f
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-03
+
+    Drop host/ prefix when deriving fqdn
+    
+    When deriving the fully-qualified name of the host from a keytab entry
+    the 'host/' prefix of the Kerberos principal must be dropped.
+    
+    Signed-off-by: Stef Walter <stefw@redhat.com>
+     * Fixed whitespace
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+
+ library/adenroll.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 9086d3bb70e041a73a78cddf465b611088c9f4f2
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-11-11
+
+    Implement 'adcli update'
+    
+    This is similar to an 'adcli join' but expects to use settings and
+    authentication from a keytab. It also expects to find a computer
+    account already present, rather than creating one.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+
+ library/adenroll.c | 206 ++++++++++++++++++++++++++++++++++++++++++++++++-----
+ library/adenroll.h |   5 ++
+ tools/computer.c   |  98 +++++++++++++++++++++++++
+ tools/tools.c      |   1 +
+ tools/tools.h      |   4 ++
+ 5 files changed, 295 insertions(+), 19 deletions(-)
+
+commit 9a5654f65ff0d4b49d962e2cf25da3296d251963
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-11-11
+
+    library: Add ability to do computer login with a keytab
+    
+    This will be used by the 'adcli update' command.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+
+ library/adconn.c | 79 +++++++++++++++++++++++++++++++++++++++++++++-----------
+ library/adconn.h |  5 ++++
+ library/adkrb5.c |  2 +-
+ 3 files changed, 70 insertions(+), 16 deletions(-)
+
+commit e45e8b9c4a36bc93ec6a6c52750b3d518c489b81
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-11-11
+
+    library: Add some string helpers
+    
+    These will be used by the logic to load settings from a keytab,
+    and used by 'adcli update' functionality.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+
+ library/adprivate.h | 11 +++++++++++
+ library/adutil.c    | 43 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 54 insertions(+)
+
+commit 60e956223b1867fe94cbc356b9a02415ec431d2c
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-11-11
+
+    library: Refactor out some kerberos common code
+    
+    Add function for creating a new context, and opening a keytab
+    in the adkrb5.c file. These basically add minimal wrappers that
+    log failures properly, and handle default keytabs.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=92908
+
+ library/adconn.c    | 34 +++++++++++++---------
+ library/adenroll.c  | 19 +++----------
+ library/adkrb5.c    | 81 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/adprivate.h | 12 ++++++++
+ 4 files changed, 117 insertions(+), 29 deletions(-)
+
+commit 4d3804d7e37d4f88a61fa5c8f0865ff2199e9dbf
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-02
+
+    Coverity: silence a false positive
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=93222
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ library/adconn.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit eff46bc3d8dce0e03ef6532113a7b01c958ed857
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-02
+
+    Fix buffer length checks
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=86971
+    
+    Reviewed-by: Stef Walter <stefw@redhat.com>
+
+ library/addisco.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+commit a69a89881e6f6032a9f8363c349978572a742a26
+Author: Sumit Bose <sbose@redhat.com>
+Date:   2015-12-02
+
+    Replace alloca() by malloc() for arrays
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=86970
+    
+    Signed-off-by: Stef Walter <stefw@redhat.com>
+     * Fixed up whitespace after function name
+
+ library/adldap.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+commit 14c3838354f9c9f197f8be6186cf25d471f21647
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-10-19
+
+    Fix 'make distcheck' issue
+
+ Makefile.am | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit d500d08f7cd3ac1d2f2e870b9af249d37755f2af
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-10-19
+
+    Bump version number
+
+ NEWS         | 6 ++++++
+ configure.ac | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+commit 135c6d4a293a5fa05bd08342609add116bb5edd7
+Author: Stef Walter <stefw@redhat.com>
+Date:   2015-10-19
+
+    Be more helpful with messages about Computer OU
+
+ library/adenroll.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit ec132a3add4c41a9c1efa6c12b2c900df66151d1
+Author: Stef Walter <stefw@redhat.com>
+Date:   2014-10-07
+
+    Use "host/fqdn@REALM" as default SPN instead of "HOST/fqdn@REALM"
+    
+    Windows doesn't care, as it's mostly case insensitive, but sshd
+    does care here.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=84749
+
+ library/adenroll.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 56ef2c6ea4ab3ee7215a55dabe4585b21874ea23
+Author: Stef Walter <stefw@redhat.com>
+Date:   2014-10-07
+
+    Allow autogen.sh to be run when srcdir != builddir
+
+ autogen.sh | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+commit 4ac6debd81e9d55c67f638d01c939ade61b6031c
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-20
+
+    doc: Fix typos found by Tomas Babej
+
+ doc/adcli.xml | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit cfb40bfeda093345bd86a77fa149c357e28968af
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-13
+
+    Release version 0.7.5
+
+ NEWS         | 6 ++++++
+ configure.ac | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+commit 906a69ee997ba5edfb1e7d6b538b4612e7ea9d17
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-13
+
+    Place IPv6 addresses properly in our temp krb5.conf
+
+ library/adconn.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit 3b4fd1161f15955abc3f2458029eff6e856fb51a
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-13
+
+    Clarify in verbose output what scheme is used to disco
+
+ library/addisco.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9fc1b8867a390849096f0a9ffcc0b4fc653d459c
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-12
+
+    Don't use cldap with IPv6 due to openldap bugs
+    
+    http://www.openldap.org/its/index.cgi/Incoming?id=7694
+
+ library/addisco.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit 45e0eda44504ea3f6856eba0edc67cd47bf4b882
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-12
+
+    Fix regression where exceeded number of servers to disco against
+
+ library/addisco.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit ab21a39509d9a073437bf39a193b5730d0303512
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-12
+
+    Stop discovery on a given server when ldap_search_ext() fails
+
+ library/addisco.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 30b43f988f44f8159e2237db05ab4a6cba2a5772
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-06
+
+    Release version 0.7.4
+
+ NEWS         | 5 +++++
+ configure.ac | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit 167b4e9fefa3a1f535548e756c7cba21c7678eae
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-06
+
+    Pass correct pointer type to ldap_set_option when setting SSF_MIN
+    
+    Failure on some archs where sizeof(int) != sizeof(ber_len_t)
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=69038
+
+ library/adconn.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 775bed934b0ba6cf7a042486375e370928810eaa
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-06
+
+    Try to contact all available addresses for discovery
+    
+    Don't just contact each SRV record when doing discovery, but
+    resolve and try to contact each A record.
+    
+    This fixes problems when a machine has both IPv4 and IPv6 records
+    but one of these isn't usable for some reason.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=68110
+
+ library/addisco.c | 63 ++++++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 49 insertions(+), 14 deletions(-)
+
+commit 2e82e2a37b01d6e270bb25f36bde3b9b6b6ca35e
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-09-06
+
+    Truncate netbios host names to 15 chars
+    
+    Truncate host names the same way Windows clients do.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=69016
+
+ library/adconn.c    | 57 ++++++++++++++++++++++++++++++++++-------------------
+ library/adenroll.c  | 23 ++-------------------
+ library/adprivate.h |  2 ++
+ 3 files changed, 41 insertions(+), 41 deletions(-)
+
+commit 57d510214d81cda1bd224d1df2686c64bc3fe700
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-08-07
+
+    Release version 0.7.3
+
+ NEWS         | 4 ++++
+ configure.ac | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+commit 2de89825f40352ffdebd1e62ddcd4b74e89596e1
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-07-23
+
+    Don't try to set encryption types on Windows 2003 and earlier
+    
+    These don't have the msDS-supportedEncryptionTypes LDAP
+    attribute, and only support a fixed set of encryption types.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=67058
+
+ library/adconn.c   | 35 +++++++++++++++++++++++++++++++++-
+ library/adconn.h   | 13 +++++++++++++
+ library/adenroll.c | 56 ++++++++++++++++++++++++++++++++++++++++--------------
+ 3 files changed, 89 insertions(+), 15 deletions(-)
+
+commit bed6f5bb0c14f602476f31747eac6e2de44c4467
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-07-30
+
+    Fix uninitialized variable
+
+ library/adconn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3e937ed8ed677714d1eddb03b5a9cc7e944f1358
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-07-22
+
+    Release version 0.7.2
+
+ NEWS         | 5 +++++
+ configure.ac | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit f914fa138cfb0d00f40c8328777f0d7193fb2c4e
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-07-19
+
+    Delete current computer if no host specified to delete-computer
+    
+    realmd will use this. realmd lets adcli calculate the current host
+    name during join, and so it makes sense to do the same during
+    delete-computer.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=65032
+
+ doc/adcli.xml    | 4 ++++
+ tools/computer.c | 7 ++++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+commit 9fe0c385107a1bb0c2b0f250a08a5df4c485556c
+Author: Laurent Bigonville <bigon@bigon.be>
+Date:   2013-07-09
+
+    Fix FTBFS on freebsd kernel
+    
+    Set HOST_NAME_MAX to 255 if this is not already defined in the headers.
+    sysconf(3) manpage indicates that this values shouldn't be less than
+    255.
+    
+    http://bugs.freedesktop.org/show_bug.cgi?id=66456
+
+ library/adprivate.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 9774ca4a17615163913958b26acf0bd566777c02
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-06-18
+
+    Fix typo of word 'necessary'
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=65782
+
+ tools/computer.c | 2 +-
+ tools/entry.c    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 084ec6754cac5c49f86ca770a4bde93d46d083e7
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-23
+
+    Always show info for --domain-controller if provided
+
+ tools/info.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+commit 7f83bf30444ddbabfeaf7ba33a4babd5aed3613c
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-13
+
+    Release version 0.7.1
+
+ NEWS         | 5 +++++
+ configure.ac | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit 763a9e8f9d61c136b480ef4b634e88c3c5d07ed6
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-13
+
+    Fix access of null pointer
+
+ library/adconn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit b50ec4acf87a1ff9a43678465e34aa43a60e36bc
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-05-13
+
+    When we recieve an LDAP ping response, don't expect more
+    
+    Don't expect more than one LDAP ping response, if we get one but
+    its either unparseable or the wrong type. Just move on.
+
+ library/addisco.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 2a231986d7b77abcf8b9ff4c20f72b71a1adf976
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-13
+
+    If automatically determining the salt fails, just guess
+    
+    If automatically determining the kerberos principal salt to use fails,
+    either due to race issues on the server, or other future problems,
+    just guess and use a salt that usually works with Windows 2003 and 2008.
+
+ library/adenroll.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+commit 5bb9357ddaab00cf28e2be61cd9690a2bdac60e2
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-06
+
+    Release version 0.7
+
+ NEWS         | 5 +++++
+ configure.ac | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit 8fdaed506001a4205b969a290428a1251356ecf8
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-06
+
+    Work around krb5_get_init_creds_password() with empty password
+    
+    Put a null password prompter to get around this issue.
+    
+    See: http://mailman.mit.edu/pipermail/krbdev/2013-May/011525.html
+
+ library/adconn.c | 26 +++++++++++++++++++++++---
+ 1 file changed, 23 insertions(+), 3 deletions(-)
+
+commit bb72ff217c29a62b68367b8e0e5f9fb7f392b53e
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-06
+
+    Handle KRB5_PREAUTH_FAILED as an invalid password
+    
+     * This happens when password is empty
+
+ library/adconn.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit cb0332f3175ba9fad8e62d37661b5b7b8e6bbea3
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-02
+
+    Add some annotations for clang analyzer
+    
+     * And fix highlighted issues
+
+ .gitignore          |  1 +
+ library/addisco.c   |  7 +------
+ library/adenroll.c  |  6 ++++++
+ library/adldap.c    |  2 +-
+ library/adprivate.h | 16 +++++++++++++++-
+ library/seq.c       | 32 +++++++++++++++++++++++++++++++-
+ library/test.h      | 16 +++++++++++++++-
+ tools/computer.c    |  4 ++--
+ tools/tools.c       | 14 ++++++++++----
+ 9 files changed, 82 insertions(+), 16 deletions(-)
+
+commit 00e99ec714bba89c2c484fd90c12de600b7c0de0
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-05-02
+
+    Fix use of freed memory
+
+ library/adconn.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 384c262faa085791a06cd56d837d2fb394860120
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-29
+
+    Release version 0.6
+
+ .gitignore   | 3 +++
+ NEWS         | 8 ++++++++
+ configure.ac | 2 +-
+ 3 files changed, 12 insertions(+), 1 deletion(-)
+
+commit b6ba535d30b7894575dd07cdf624c330ffe24d17
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-29
+
+    Use ldap_init_fd to better support IP addresses
+    
+    When using an IP address we need to connect to that address
+    but then use the host name discovered in the LDAP URL. OpenLDAP
+    doesn't make this easy to do so use the documented but not-in-headers
+    ldap_init_fd function.
+
+ configure.ac     |   4 ++
+ library/adconn.c | 110 +++++++++++++++++++++++++++++++++++++++----------------
+ tools/tools.c    |   6 +--
+ 3 files changed, 86 insertions(+), 34 deletions(-)
+
+commit e8447f9cbbef5a73c25bd9890eca29e549a0a3c6
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-25
+
+    Add a --one-time-password to join
+    
+    This is equivalent to --login-type=computer and providing
+    the computer password.
+
+ doc/adcli.xml    |  7 +++++++
+ tools/computer.c | 12 +++++++++---
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+commit 49733718e55647a5e02f192662fdca3d8e9d4e1b
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-25
+
+    Add option to print out the machine password after a join
+
+ doc/adcli.xml    |  6 ++++++
+ tools/computer.c | 26 ++++++++++++++++++++++++--
+ 2 files changed, 30 insertions(+), 2 deletions(-)
+
+commit cda6ec5171d9015514f22b5074746d0914020c2c
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-25
+
+    Allow processing the computer password more easily in text form
+    
+    Remove shell characters and spaces and so on from auto-generated
+    computer passwords
+
+ library/adenroll.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 46361aa1366ce9def894249cfbc926585d24e328
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-12
+
+    Fine tune the --os-name and --os-version arguments
+    
+    The values should be required
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=54489
+
+ tools/computer.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 7a3f6105e108312beb2997442ff74bba59c9684f
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-11
+
+    Add --user-principal argument for joining domains
+    
+    This fills in the userPrincipalName attribute on the account
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=62755
+
+ doc/adcli.xml      |  13 +++++++
+ library/adenroll.c | 107 ++++++++++++++++++++++++++++++++++++++++++++++++++---
+ library/adenroll.h |   7 ++++
+ tools/computer.c   |  10 +++++
+ 4 files changed, 131 insertions(+), 6 deletions(-)
+
+commit c2970e74a8568baca541b46efaa55ee53e38c7de
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-11
+
+    Streamline how extra account attributes are updated
+    
+     * Ignore failures updating auxiliary attributes, with warning
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=62755
+
+ library/adenroll.c | 227 +++++++++++++++++++----------------------------------
+ 1 file changed, 82 insertions(+), 145 deletions(-)
+
+commit b1cad71e241f2bf3b4bc0f6470073dd1f72026af
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-10
+
+    Remove the last reference to p11-kit that came over with docs
+
+ doc/adcli.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 335b28b2b403290b9de927255c8299cba8af1591
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-08
+
+    Release version 0.5
+
+ NEWS         | 18 ++++++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+commit 31165cd1e869dab58178159b7c4d21312f3f5748
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-10
+
+    Don't retrieve kvno if not joining
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=56149
+
+ library/adenroll.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 1e20c086a077605e2694df0b8da49923004d218d
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-10
+
+    Support using --login-ccache without an argument
+    
+    Just use the default krb5 ccache in that case.
+
+ library/adconn.c | 15 ++++++++++++++-
+ tools/computer.c | 10 +++++-----
+ tools/entry.c    | 12 ++++++------
+ tools/tools.c    |  1 -
+ 4 files changed, 25 insertions(+), 13 deletions(-)
+
+commit 428cf878944eca7b0762e1e434cc4895dff98372
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-10
+
+    Add support for setting operatingSystem and related attrs
+    
+     * Add new arguments to join command: --os-name --os-version
+       and --os-service-pack
+     * These are not supported when a computer is claiming an
+       account on its own credentials.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=54489
+
+ doc/adcli.xml       | 32 ++++++++++++++++++++
+ library/Makefile.am |  1 +
+ library/adenroll.c  | 84 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ library/adenroll.h  | 15 ++++++++++
+ library/adldap.c    |  4 +--
+ tools/computer.c    | 35 ++++++++++++++++++++++
+ 6 files changed, 168 insertions(+), 3 deletions(-)
+
+commit e1069eaf9a81f061dbaf55999a5811cc5d9aea2e
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-10
+
+    Remove lookup of preferredOU which was incorrect
+    
+     * preferredOU is an attribute on a user or computer, not
+       on the domain as a whole. We cannot use it during joins
+
+ library/adenroll.c | 45 ---------------------------------------------
+ 1 file changed, 45 deletions(-)
+
+commit 2d412510118a1af08e6fba300129282773386292
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-10
+
+    Make ADCLI_STRICT=1 abort() when precondition
+
+ library/adprivate.h | 16 ++--------------
+ library/adutil.c    | 16 ++++++++++++++++
+ tools/computer.c    | 11 ++---------
+ 3 files changed, 20 insertions(+), 23 deletions(-)
+
+commit 834c9f875e33eb28cf063858133e347e73593c54
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-10
+
+    Add more documentation for building adcli
+
+ Makefile.am         |   4 +-
+ doc/Makefile.am     |   1 +
+ doc/adcli-devel.xml | 204 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ doc/adcli-docs.xml  |  11 +--
+ doc/adcli.xml       |   2 +-
+ doc/gtk-doc.xsl     |   2 +-
+ 6 files changed, 216 insertions(+), 8 deletions(-)
+
+commit 0fca72222fec97c975954881463db49deb37989f
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Fix problems connecting without DNS
+    
+     * Pass the actual name that we're trying to connect to to openldap
+     * Tell openldap to pass the right host name to GSSAPI
+
+ library/adconn.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+commit 74ff6fe7517d4a012bae0cba55c89c2573ca95d1
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    A bit of cleanup of adcli output
+
+ tools/computer.c |  2 +-
+ tools/info.c     | 16 ++++++++++------
+ 2 files changed, 11 insertions(+), 7 deletions(-)
+
+commit e16af692fdbb8569ebdb6e8d0f40d426fef5a236
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Allow passing a domain directly on the command line to join command
+
+ tools/computer.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 6f4880029a2c002395cc19d4a7558c830f143d87
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Catch more permission failures when joining domain
+    
+     * Windows Server returns all sorts of strange errors when
+       permission problems for joining domain
+
+ library/adenroll.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit 48166f0a3b33a5d69fc09486cc8e0f6848a48867
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Discovery fixes
+    
+     * Discover without DNS
+     * Support libldaps without cldap built in
+     * Better use of discovery data, without going through intermediate
+       LDAP URLs
+
+ library/adconn.c  | 221 ++++++++++++++++++++++++------------------------------
+ library/adconn.h  |   8 --
+ library/addisco.c |  42 ++++++-----
+ library/addisco.h |   3 +-
+ tools/info.c      |  10 +--
+ 5 files changed, 129 insertions(+), 155 deletions(-)
+
+commit d417fcc0c1cb1c89b23aef925ac64e994052eca2
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Fix possible uninitialized variable
+
+ library/addisco.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 030126689753052daa5323337c765a8b496ecb9a
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Add manual page for adcli and documentation infrastructure
+
+ .gitignore                       |   2 +
+ Makefile.am                      |  21 +-
+ configure.ac                     |  39 ++
+ doc/Makefile.am                  |  68 +++
+ doc/adcli-docs.xml               |  21 +
+ doc/adcli.xml                    | 529 +++++++++++++++++++++++
+ doc/gtk-doc.xsl                  | 897 +++++++++++++++++++++++++++++++++++++++
+ doc/static/gtk-doc.css           | 264 ++++++++++++
+ doc/static/home.png              | Bin 0 -> 654 bytes
+ doc/static/left.png              | Bin 0 -> 459 bytes
+ doc/static/right.png             | Bin 0 -> 472 bytes
+ doc/static/style.css             | 114 +++++
+ doc/static/up.png                | Bin 0 -> 406 bytes
+ doc/version-greater-or-equal.xsl |  54 +++
+ tools/computer.c                 |  28 +-
+ 15 files changed, 2023 insertions(+), 14 deletions(-)
+
+commit 3fb917556b5e2ad38b5bfbafbcf2f3b60ce90f46
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Add support for adding/removing members from groups
+    
+     * add-member command
+     * remove-member command
+     * Refactor attribute handling, and provide ways to load
+       and modify entries.
+
+ library/adattrs.c | 157 +++++++++++++++++++++++++++++-----------
+ library/adattrs.h |  27 +++++--
+ library/adentry.c |  89 +++++++++++++++++++----
+ library/adentry.h |   7 ++
+ library/adldap.c  |   7 +-
+ tools/entry.c     | 212 ++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ tools/tools.c     |   2 +
+ tools/tools.h     |   8 +++
+ 8 files changed, 442 insertions(+), 67 deletions(-)
+
+commit 2f50a5d3f36251caa5a1128251618e79d1a9ef6d
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    Add support for creating/deleting groups
+    
+     * create-group command
+     * delete-group command
+     * Refactor a bit to use the same code for user/groups
+
+ library/Makefile.am |   2 +-
+ library/adcli.h     |   3 +-
+ library/adentry.c   | 423 +++++++++++++++++++++++++++++++++++++++++++++
+ library/adentry.h   |  54 ++++++
+ library/aduser.c    | 372 ----------------------------------------
+ library/aduser.h    |  51 ------
+ tools/Makefile.am   |   2 +-
+ tools/entry.c       | 486 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ tools/tools.c       |   2 +
+ tools/tools.h       |   6 +-
+ tools/user.c        | 326 -----------------------------------
+ 11 files changed, 974 insertions(+), 753 deletions(-)
+
+commit b089bce11a588f158c36fac0ab86ced756e50ac1
+Author: Stef Walter <stefw@redhat.com>
+Date:   2013-04-09
+
+    More expressive logging for ldap errors
+
+ library/adconn.c    |  13 +++---
+ library/addisco.c   |   8 ++--
+ library/adenroll.c  | 115 ++++++++++++++++++++++------------------------------
+ library/adldap.c    |  18 +++++---
+ library/adprivate.h |   4 +-
+ library/aduser.c    |  39 ++++++++----------
+ 6 files changed, 90 insertions(+), 107 deletions(-)
+
+commit 18d13ebdfc7ff1a22b028f1c048bb4964e73f857
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-08
+
+    Clean up the adcli arguments
+    
+     * Use --domain-controller consistently to specify the server
+       to connect to. Still accept --domain-server for the 'join'
+       command for backward compatibility
+     * Remove the --ldap-url argument, as --domain-controller is an
+       acceptable replacement.
+     * Use --login-user consistently to specify the admin user who
+       is using adcli. Still accept --user for the 'join' command
+       for backward compatibility.
+     * Use --domain-ou consistently to specify the organizational
+       unit to create objects in. Still accept --computer-ou for
+       the 'join' command for backward compatibility.
+     * Remove some extra info command arguments.
+
+ library/adconn.c   | 38 +++++++++++++++----------------
+ library/adconn.h   |  8 +++----
+ library/adenroll.c | 56 +++++++++++++++++++++++-----------------------
+ library/adenroll.h |  4 ++--
+ library/aduser.c   | 26 +++++++++++-----------
+ library/aduser.h   |  4 ++--
+ tools/computer.c   | 65 ++++++++++++++++++++++++------------------------------
+ tools/info.c       | 43 ++++--------------------------------
+ tools/user.c       | 26 +++++++++++-----------
+ 9 files changed, 114 insertions(+), 156 deletions(-)
+
+commit 87932fbd036b60de56294782858627c996ea9cb2
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-08
+
+    Implement domain discovery, including support for sites
+    
+     * Add a new 'adcli info' command
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=54490
+
+ library/Makefile.am  |   4 +-
+ library/adcli.h      |   1 +
+ library/adconn.c     |  62 ++---
+ library/addisco.c    | 764 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/addisco.h    |  74 +++++
+ library/getsrvinfo.c | 263 ------------------
+ library/getsrvinfo.h |  42 ---
+ tools/Makefile.am    |   1 +
+ tools/info.c         | 219 +++++++++++++++
+ tools/tools.c        |  32 ++-
+ tools/tools.h        |   4 +
+ 11 files changed, 1109 insertions(+), 357 deletions(-)
+
+commit 5a04b390c75115acf06fedf751ce88ff2dd5207e
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-08
+
+    Fix possible crash when for a NULL strv
+
+ library/adutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit c581500ceafff6cd59ba690a4400d52929645289
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-08
+
+    Less complicated message logging
+    
+    Now that we're not trying to be a library, just use global
+    functions and storage for message callbacks and logging.
+
+ library/adconn.c    | 177 ++++++++++++----------------------------------------
+ library/adconn.h    |  13 ----
+ library/adenroll.c  | 146 +++++++++++++++++++++----------------------
+ library/adldap.c    |   5 +-
+ library/adprivate.h |  24 +++----
+ library/aduser.c    |  34 +++++-----
+ library/adutil.c    |  72 +++++++++++++++++++++
+ library/adutil.h    |  10 +++
+ tools/computer.c    |  16 ++---
+ tools/tools.c       |   7 +--
+ tools/user.c        |   8 +--
+ 11 files changed, 236 insertions(+), 276 deletions(-)
+
+commit 86d27165487d53f2b4d631993a1143f11896480c
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-08
+
+    Use a test framework that supports TAP output
+    
+    For integration with automake 1.13, and perhaps others
+
+ library/Makefile.am |   4 +-
+ library/adattrs.c   |  49 +++++-----
+ library/adldap.c    |  41 +++++----
+ library/adutil.c    |  27 +++---
+ library/seq.c       | 133 ++++++++++++++-------------
+ library/test.c      | 256 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/test.h      | 135 +++++++++++++++++++++++++++
+ 7 files changed, 523 insertions(+), 122 deletions(-)
+
+commit 6f304721bd72c50102bbb8aff911bd10a6fdaf1f
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-05
+
+    Add support for adding and deleting active directory users
+
+ .gitignore          |   2 +
+ library/Makefile.am |  15 ++-
+ library/adattrs.c   | 240 +++++++++++++++++++++++++++++++++
+ library/adattrs.h   |  48 +++++++
+ library/adcli.h     |   1 +
+ library/adenroll.c  |  34 +----
+ library/adldap.c    | 232 ++++++++++++++++++++++++++++----
+ library/adprivate.h |  45 ++++++-
+ library/aduser.c    | 377 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/aduser.h    |  51 +++++++
+ library/adutil.c    |  22 ++-
+ tools/Makefile.am   |   1 +
+ tools/tools.c       |   2 +
+ tools/tools.h       |  12 ++
+ tools/user.c        | 326 +++++++++++++++++++++++++++++++++++++++++++++
+ 15 files changed, 1336 insertions(+), 72 deletions(-)
+
+commit dc8333a94dd0b1582e7ad0e63b038635f21bc47c
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-02-12
+
+    Implement the 'delete-computer' and 'reset-computer' commands
+
+ library/adenroll.c | 285 ++++++++++++++++++++++++++++++++++++++++++-----------
+ library/adenroll.h |   6 ++
+ tools/computer.c   | 150 ++++++++++++++++++++++++++++
+ tools/tools.c      |   2 +
+ tools/tools.h      |   8 ++
+ 5 files changed, 391 insertions(+), 60 deletions(-)
+
+commit f4dff16da3cef29ccb0282c47252cdf3b4a19d55
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-02-12
+
+    Refactor the command line interface
+    
+     * More intelligent usage output
+     * Rename the 'preset' command to 'preset-computer'
+     * Split the computer tools into a separate file
+
+ tools/Makefile.am |   3 +-
+ tools/adcli.c     | 809 ------------------------------------------------------
+ tools/computer.c  | 414 ++++++++++++++++++++++++++++
+ tools/tools.c     | 491 +++++++++++++++++++++++++++++++++
+ tools/tools.h     |  65 +++++
+ 5 files changed, 972 insertions(+), 810 deletions(-)
+
+commit 08a2ea144aa012e418d0c54728f6c4691c97e76f
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-05
+
+    Add generic sequence code
+    
+    This can be used both as an array an and a sorted lookup table
+
+ .gitignore          |   2 +
+ Makefile.am         |   6 +
+ library/Makefile.am |  26 ++-
+ library/adprivate.h |   6 +-
+ library/adutil.c    | 119 +++++-----
+ library/seq.c       | 612 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/seq.h       |  85 ++++++++
+ 7 files changed, 802 insertions(+), 54 deletions(-)
+
+commit 8958d28c5058bb53458c1ad3cfcd500280c4f7fb
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-02-12
+
+    Fix use of CFLAGS for building the library
+
+ library/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 79fb7cf291ca662332542e165dd777039e9ed2bf
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-05
+
+    Remove coverage files when cleaning
+
+ build/Makefile.am   | 8 ++++++++
+ library/Makefile.am | 5 +++++
+ tools/Makefile.am   | 5 +++++
+ 3 files changed, 18 insertions(+)
+
+commit 28a75bffc7cd8cca6d0cf6a47dad501f92243983
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-05
+
+    No longer export a library
+    
+    The adcli tool is the main interface for this. Later we may refactor this to use
+    a very different implementation.
+
+ Makefile.am           |  7 -------
+ configure.ac          | 52 ---------------------------------------------------
+ library/Makefile.am   | 25 +++----------------------
+ library/adcli-1.pc.in | 13 -------------
+ library/adprivate.h   |  3 ---
+ library/adutil.c      |  6 +++---
+ library/adutil.h      |  5 +++++
+ tools/Makefile.am     |  2 --
+ tools/adcli.c         |  2 +-
+ 9 files changed, 12 insertions(+), 103 deletions(-)
+
+commit ccd8fd7f1082950377db4f0e1782a7e38e5c24c8
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-04-04
+
+    Some autoconf tweaks
+    
+     * Cleanup autoconf warnings
+     * Move m4/ into build/m4
+
+ .gitignore          |  3 +--
+ Makefile.am         |  3 ++-
+ build/Makefile.am   |  0
+ build/m4/.gitignore |  1 +
+ configure.ac        | 15 ++++++---------
+ m4/.gitignore       |  1 -
+ 6 files changed, 10 insertions(+), 13 deletions(-)
+
+commit c37a1edfaa2086d06eb9f1020acd2682c7f81dfb
+Author: Stef Walter <stefw@gnome.org>
+Date:   2013-02-19
+
+    build: Use the resolv.h header when checking for res_query
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=60561
+
+ configure.ac | 28 +++++++++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 5 deletions(-)
+
+commit 00aa642282355563f57432ebbc398adfc4b68ecd
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-22
+
+    When --user is specified don't try computer login
+
+ tools/adcli.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit c7f6ab8341f7400f963a7e155c33cb312bfb61cd
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-22
+
+    Only include /etc/krb5.conf if it exists
+    
+    Including an invalid krb5.conf led to failure to init a
+    krb5_context.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=57403
+
+ tools/adcli.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+commit 377b3d5c3b4870389dd36770500aaa6e3bda63d7
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-22
+
+    Check for SASL headers when configuring
+
+ configure.ac | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+commit 0b60a75784e8ea88e32eae8bb23e4e128a8646ef
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-22
+
+    Unquote error message when ldap not found
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 23b43dd5be2ed8ddaa94b05c7cedbcbbc3f77abd
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-13
+
+    Don't print out or expose the computer container DN
+    
+     * This is just confusing, and not a common concept
+     * Don't want to have to support this or get questions about it.
+
+ library/adenroll.c | 7 -------
+ library/adenroll.h | 2 --
+ tools/adcli.c      | 1 -
+ 3 files changed, 10 deletions(-)
+
+commit 34f0d8479480a06f569663cf8a15ac689800da9d
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-13
+
+    Look up the nETBIOSName correctly
+    
+     * Use the configurationNamingContext and CN=Partitions subtree
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=57064
+
+ library/adconn.c   | 45 +++++++++++++++++++++++++++++++++++----------
+ library/adconn.h   |  2 +-
+ library/adenroll.c |  9 +++++----
+ tools/adcli.c      |  2 +-
+ 4 files changed, 42 insertions(+), 16 deletions(-)
+
+commit 84676ef669be6a7182c0e0fa4f28a80ce573e952
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-12
+
+    Release 0.4
+
+ NEWS         | 6 ++++++
+ configure.ac | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+commit cb546913fa993593fdf4e45edbbd6c43f78f5e84
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-12
+
+    Use a private krb5.conf file
+    
+     * This helps us connect to the same server consistently.
+     * Allows --domain-server argument to work properly.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=55487
+
+ library/adconn.c    | 115 ++++++++++++++++++++++++++++++++++++++++++++++++++--
+ library/adconn.h    |   5 +++
+ library/adprivate.h |   4 ++
+ library/adutil.c    |  27 ++++++++++++
+ tools/Makefile.am   |   1 +
+ tools/adcli.c       | 113 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 261 insertions(+), 4 deletions(-)
+
+commit 08bd7b69f0da02ee750fa527453c526e627d182d
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-09
+
+    Rework how computer account is located and created
+    
+     * Always try to find the account first, using sAMAccountName.
+     * If computer OU is specified enforce that the account is in
+       the right place.
+     * Use terminology 'computer-ou' instead of 'preferred-ou' where
+       appropriate, since it's not just preferred anymore.
+     * Don't allow explicitly setting the computer container, too
+       complicated and not exposed anywhere.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=56868
+
+ library/adenroll.c  | 354 +++++++++++++++++++++++++++++-----------------------
+ library/adenroll.h  |   7 +-
+ library/adldap.c    |  94 ++++++++++++++
+ library/adprivate.h |   5 +
+ tools/adcli.c       |   4 +-
+ 5 files changed, 303 insertions(+), 161 deletions(-)
+
+commit 72c1a9f7bd71d4bc8920b6998e749afb90fe8372
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-09
+
+    Don't follow referalls when searching LDAP server
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=56868
+
+ library/adconn.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 8b793abd22593e8b764a0c0da40794095718697f
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-11-09
+
+    Ignore built files
+
+ .gitignore | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 2db1f46959d1c29394e7a4976ef0f9c895b7cd93
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-10-30
+
+    Fix freeing of uninitialized memory
+
+ library/adenroll.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 24c6bedfe0862f8d61d5939ee10c9a5a749c9860
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-10-20
+
+    Release version 0.3
+
+ NEWS         | 6 ++++++
+ configure.ac | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+commit e2c5f29cc7bc1cca7f3d7c8544d60f0aaacd07f2
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-10-20
+
+    Don't use DNS to lookup the host name for enrollment
+    
+     * Use the computers own concept of what its host name is
+     * The idea is that dynamic DNS is properly set after we join
+       the domain (perhaps by sssd).
+
+ library/adconn.c | 47 +++--------------------------------------------
+ 1 file changed, 3 insertions(+), 44 deletions(-)
+
+commit 77a8f652493ec999953458b16d064bb62b450b52
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-10-20
+
+    Don't try to update userAccountControl for precreated accounts
+    
+     * When auto-joining or using OTP, don't try to update userAccountControl
+       attribute.
+     * This attribute is not writable by the computer account itself.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=56148
+
+ library/adenroll.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+commit 590d44b3a00231a1ae2d3e498ad7c1faa96d1845
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-10-19
+
+    Fix an assertion and handle errors correctly when setup fails
+
+ library/adenroll.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+commit be76ec644c949ab14b2e3f3a6ef3f4f9778eb7bf
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-10-19
+
+    Allow use of host names without any dot.
+    
+     * In the case where DNS isn't working we calculate the computer name
+       from the host name. Allow that name to have no dots.
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=56147
+
+ library/adconn.c   | 15 ++++++++++-----
+ library/adenroll.c | 15 ++++++++++-----
+ 2 files changed, 20 insertions(+), 10 deletions(-)
+
+commit 909670dba8ada7ab3ecc99483b241face30d3313
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-30
+
+    Require LDAP when building adcli
+
+ configure.ac | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+commit fef364f413d87dfe0e6111634b7311e9c43850cc
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-30
+
+    Require libtool to build adcli
+
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit b8107de6344b46d695783bac0d1e3b9c5b18e751
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-04
+
+    Fix license addresses, and missing header comments
+
+ library/adcli.h      |  4 ++--
+ library/adconn.c     |  4 ++--
+ library/adconn.h     |  4 ++--
+ library/adenroll.c   |  4 ++--
+ library/adenroll.h   |  4 ++--
+ library/adkrb5.c     |  4 ++--
+ library/adldap.c     |  4 ++--
+ library/adprivate.h  |  4 ++--
+ library/adutil.c     |  4 ++--
+ library/adutil.h     |  4 ++--
+ library/getsrvinfo.c |  4 ++--
+ library/getsrvinfo.h |  4 ++--
+ tools/adcli.c        | 22 ++++++++++++++++++++++
+ 13 files changed, 46 insertions(+), 24 deletions(-)
+
+commit 06fb3ecbe87b511a03997fb5b0e25e407c939192
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-04
+
+    Ignore files built during release process
+
+ .gitignore | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 7e0f823019c004f5849e0dffb42db96dbdafc8d4
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-04
+
+    Release version 0.2
+    
+     * And fix some build warnings
+
+ NEWS             | 9 +++++++++
+ configure.ac     | 2 +-
+ library/adconn.c | 2 +-
+ tools/adcli.c    | 2 +-
+ 4 files changed, 12 insertions(+), 3 deletions(-)
+
+commit 3779c40fc7e9c0fb23f2058ac32421ce65841b56
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-03
+
+    Fix erroneous argument number check in preset command
+
+ tools/adcli.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5784dc52c6f042a1c8b343b0d1cf6fac651e699a
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-03
+
+    Return the correct exit codes
+    
+     * On failure we return the positive values of the result
+       codes in adutil.h
+
+ tools/adcli.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit a2887aae0b7dc0361e6a045abf96d2e526f3caba
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-03
+
+    Load the credential cache provided with --login-ccache
+    
+     * We do this so that we can use the ccache when changing the
+       computer password during a one-time-password or automatic join.
+     * This also lets us provide more intelligable error messages
+
+ library/adconn.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+commit ad44e157514dff1a0726e72863e9ef9ab6e1ed58
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-03
+
+    Implement the --show-details join option
+    
+     * This prints out domain details in a machine parseable format
+
+ tools/adcli.c | 60 +++++++++++++++++++++++++++++++++++------------------------
+ 1 file changed, 36 insertions(+), 24 deletions(-)
+
+commit b1790c04da4c26e21baa743cc0c7ffb07e2e4aac
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-03
+
+    Add support for retrieving the short (ie: netbios) domain name
+
+ library/adconn.c | 48 ++++++++++++++++++++++++++++++++++++++++++++++--
+ library/adconn.h |  2 ++
+ 2 files changed, 48 insertions(+), 2 deletions(-)
+
+commit 850c74548fe42d69bc5700e4d38d42af617764af
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-09-03
+
+    Rename --login-name to the more common --user argument
+
+ tools/adcli.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit d1520504e9a5178eec9c571a8e754c108f1bdfb7
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-31
+
+    Cleanup some of the usage/error output to be clearer
+
+ tools/adcli.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 57c1cd21720235b3913dd496020353014f125532
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-31
+
+    Add --one-time-password to the 'preset' command
+    
+     * Instead of using the default computer account password specify
+       a preset password to use.
+
+ tools/adcli.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+commit a71048282117d3e0fc6192c3f04a4fa1087f7e5b
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-31
+
+    Make sure long options don't conflict with short
+
+ tools/adcli.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit bd5a950f26b56e48e8354510ba12eaa8b718f50b
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-31
+
+    Print info messages when setting/changing computer account password
+
+ library/adenroll.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit e6c9d7480149aa01932e3e9c0ca08d7ce0c6a149
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-31
+
+    Implement various ways to prompt/read login or computer password
+    
+     * --no-password does not prompt
+     * --promt-password (default) prompts as expected
+     * --stdin-password reads the password from stdin
+
+ library/adconn.c |  69 ++++++++++++++++++----------
+ library/adconn.h |   4 +-
+ tools/adcli.c    | 134 +++++++++++++++++++++++++++++++++++++++++++++++++++----
+ 3 files changed, 174 insertions(+), 33 deletions(-)
+
+commit 712d0fcde8c471464ebb91a3d57443fecbf9cf4b
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-31
+
+    Specify domain in --domain parameter
+    
+     * We default to domain calculated from host name
+     * This allows cleaner syntax for 'preset' command, and
+       future 'leave' command
+
+ tools/adcli.c | 50 +++++++++++++++++++++++++++-----------------------
+ 1 file changed, 27 insertions(+), 23 deletions(-)
+
+commit 23e5b9ed6f8231c3e551c4c24ea73832c9d5233d
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-31
+
+    Cleanup option parsing
+    
+     * Some options have no short equivalent
+     * Print intelligent usage based on commands
+
+ tools/Makefile.am |   6 +
+ tools/adcli.c     | 380 +++++++++++++++++++++++++++++++++++++++---------------
+ 2 files changed, 285 insertions(+), 101 deletions(-)
+
+commit 05a1cd35665de91d4e2e62188efd09235b8098bc
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-23
+
+    Update project URLs
+
+ Makefile.am  | 2 +-
+ configure.ac | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit c9747db817e8796ffb927ffc1583d0b75886417d
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-15
+
+    Release version 0.1
+
+ .gitignore | 1 +
+ NEWS       | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit 02f2ca343e04b9f319ffe3d681ec6c9f46e4d97f
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-09
+
+    Don't print '(null)' when using default domain
+
+ tools/adcli.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 8200a052fd5a13c3a3df2b23cc912e70396d0eb4
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-09
+
+    Fix memory leak when setting password fails
+
+ library/adenroll.c | 34 ++++++++++++++++++++++++++++------
+ 1 file changed, 28 insertions(+), 6 deletions(-)
+
+commit bc6c1ea1970cac227e6892419e0bdabe60b487ef
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-09
+
+    Fix parsing of principals when no default realm is set
+
+ library/adconn.c   |  8 +++++++-
+ library/adenroll.c | 17 ++++++-----------
+ library/adkrb5.c   |  2 +-
+ 3 files changed, 14 insertions(+), 13 deletions(-)
+
+commit 8241b3c493c5914665413ea92b82b07693a3c77a
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-08-09
+
+    Print a better error message if can't create krb5 context
+
+ library/adconn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit ee239e62c91b31e0b8889fa3b6608c958180fbf8
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-21
+
+    Fix memory leak of attributes
+
+ library/adenroll.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit e49d523a50a30dec54959d8defc156185e723368
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-21
+
+    Set the dNSHostName and servicePrincipalName attributes separately
+    
+     * And ignore failures setting these attributes
+
+ library/adenroll.c | 109 ++++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 87 insertions(+), 22 deletions(-)
+
+commit 1d5301ed61993b40e49ab27e671a1f82456984e4
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-21
+
+    Fix regression of prompting for passwords during join
+
+ tools/adcli.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4b7c7530d2884792abe90c7514cdb19d68a4aaa1
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-21
+
+    Fix regression, and crash on NULL keytab, during join
+
+ library/adenroll.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 48bd64594a4b46a6ac88f147b3ebb6ed9a48f0ee
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-21
+
+    Set msDS-supportedEncryptionTypes correctly
+    
+     * Tell AD about the enctypes we have in our keytab. Either the defaults
+       or the ones the caller requests.
+     * This is done by setting the msDS-supportedEncryptionTypes attribute.
+     * If caller has not explicitly requested certain enctypes try to respect
+       a msDS-supportedEncryptionTypes attribute already present on the
+       computer account.
+
+ library/adenroll.c  | 92 ++++++++++++++++++++++++++++++++++++++++++++++++++---
+ library/adkrb5.c    | 79 +++++++++++++++++++++++++++++++++++++++++++++
+ library/adprivate.h |  4 +++
+ 3 files changed, 170 insertions(+), 5 deletions(-)
+
+commit b4c5bc9fdd259eeff4d25eccc1a53d7814065c37
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-21
+
+    Fix warning due to constness
+
+ library/adconn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 100b8f4ad6ac8e92daf2b0ce2e429ac0f350f817
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-20
+
+    Fix warning, add const cast
+
+ library/adconn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1cfa291ca5174cc81f624ae23eb211f9512a42e9
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-20
+
+    Clearer messages when setting password fails
+
+ library/adenroll.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit d4470cb82ae7ca1e454a673b25e576ffb8971477
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-20
+
+    If there are no attributes to update, then don't ldap_modify
+
+ library/adenroll.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit b94db022b51410ca2975f8ec906487048f861be8
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-20
+
+    Use the enroll domain name for calculating the enroll computer name
+    
+     * Rather than the connection computer name, which may just be the
+       one that is used for authentication
+
+ library/adenroll.c | 25 ++++++++++++++++++++-----
+ 1 file changed, 20 insertions(+), 5 deletions(-)
+
+commit 3ed0a52f3639a12de967be8b91186fbe22c0ab72
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-20
+
+    Use kerberos password change/set functions for managing computer password
+
+ library/adconn.c    | 163 +++++++++++++++++++++++++++----------------
+ library/adenroll.c  | 194 +++++++++++++++++++++++++++++++++++++++-------------
+ library/adkrb5.c    |  20 ++++++
+ library/adprivate.h |  15 ++++
+ tools/adcli.c       |   1 +
+ 5 files changed, 284 insertions(+), 109 deletions(-)
+
+commit 773b39b507361c8eafa1c309d27f6b2d6e8790a9
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-20
+
+    Support authentication with computer accounts
+    
+     * Rename user credentials related methods and variables appropriately
+     * Use term 'computer name' for the local netbios name
+     * Add ability to discover domain info without connecting
+     * Add ability to calculate enroll info without enrolling
+     * Remove one-time-password code we added a few commits ago, and instead
+       use the default/reset computer password
+
+ library/adconn.c    | 332 +++++++++++++++++++++++++++++++++--------
+ library/adconn.h    |  33 ++++-
+ library/adenroll.c  | 414 +++++++++++++++++++++++++++-------------------------
+ library/adenroll.h  |  26 ++--
+ library/adldap.c    |  28 ++++
+ library/adprivate.h |   8 +
+ library/adutil.c    |  22 +++
+ tools/adcli.c       |  47 +++---
+ 8 files changed, 604 insertions(+), 306 deletions(-)
+
+commit 8a3cede4965074e0b5412752027dfa723aad872a
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-18
+
+    Rename 'admin' parameters to 'login'
+    
+    So that in the future they can represent host credentials or other
+    login creds
+
+ library/adconn.c   | 92 +++++++++++++++++++++++++++---------------------------
+ library/adconn.h   | 14 ++++-----
+ library/adenroll.c |  7 +++--
+ tools/adcli.c      | 10 +++---
+ 4 files changed, 62 insertions(+), 61 deletions(-)
+
+commit c1154baf81e8d23d0daa8ce28d5d86173c17066c
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    In adcli print out the last error message, instead of generic message
+
+ library/adconn.c   | 44 +++++++++++++++++++++++++++++++++-----------
+ library/adconn.h   |  4 ++++
+ library/adenroll.c |  3 +++
+ tools/adcli.c      |  6 +++---
+ 4 files changed, 43 insertions(+), 14 deletions(-)
+
+commit a769d3905866516379ecf4c3f719f9030c8d2bb8
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Don't automatically overwrite computer accounts during prejoin
+
+ library/adenroll.c | 17 ++++++++++++-----
+ library/adenroll.h |  1 +
+ tools/adcli.c      | 12 +++++++++---
+ 3 files changed, 22 insertions(+), 8 deletions(-)
+
+commit 9e44a2f3460aa878e6327765a97ddcdccb6aacd7
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Only print out one time password if it was generated
+
+ tools/adcli.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 8315c76f31a7568acb38cf8c9e6eb65a23d9f877
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Print out computer account names clearly when prejoining
+
+ tools/adcli.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit e824aaa708df20727a035b56e7702e6ec168e373
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Use simpler passwords for one time passwords
+    
+     * Only consist of isalpha() and isdigit() characters and
+       60 characters long
+
+ library/adenroll.c | 90 ++++++++++++++++++++++++++++++++++++++----------------
+ library/adenroll.h |  7 +++++
+ tools/adcli.c      | 16 +++++-----
+ 3 files changed, 79 insertions(+), 34 deletions(-)
+
+commit eacda3bef90193a08e1d6c983a8a083a4d7b69fb
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Rename ad-enroll to adcli and add prejoin support
+
+ .gitignore        |   1 +
+ tools/Makefile.am |   4 +-
+ tools/ad-enroll.c | 190 -------------------------------
+ tools/adcli.c     | 327 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 330 insertions(+), 192 deletions(-)
+
+commit d4c4b4bd69540998073457b948c479fb8a8aab58
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Add option to enroll without setting up a keytab
+
+ library/adenroll.c | 6 +++++-
+ library/adenroll.h | 7 ++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+commit 25a7306e71483bd46a0045ebb117da4feed28feb
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Clear all state not explicitly set
+    
+     * This makes it simpler to use a single adcli_enroll structure
+       for multiple enrolls, like we want to do for prejoins.
+
+ library/adenroll.c | 51 +++++++++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 47 insertions(+), 4 deletions(-)
+
+commit 3f98a383c283c5410fe2cb2065dcda7b7366373a
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    Correctly null terminate passwords explicitly set
+    
+     * This works around a bug in some krb5 versions
+     * And support using -1 as the length argument
+
+ library/adenroll.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit cbf0fc117f762b28cad50ba8b6f1061b36921b0a
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-19
+
+    adcli_enroll_get_host_password() returns const
+
+ library/adenroll.c | 2 +-
+ library/adenroll.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit e7f7a1d5372be7bb589a6899dee0462774bf453f
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-04
+
+    Fix use of uninitialized variables
+
+ library/adldap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 697f60c5c4cd9148012375d67f15efff67183bfd
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-07-04
+
+    Commit empty m4 directory to git
+
+ .gitignore    | 2 +-
+ m4/.gitignore | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit 179eee900ea00af6009820de4ff697adeb78ecd8
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-31
+
+    Classify errors correctly when cannot authenticate as admin
+    
+     * This might be the first time we're 'hitting' the server
+     * Some errors signify directory problems, others credential problems.
+
+ library/adconn.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+commit a3174b32fb22198ced8815a90f12aaa74fa8745d
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-31
+
+    Better message when kerberos authenication fails
+
+ library/adconn.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 0a59caa653b126494e823459ef02fd2d314e1f0d
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-31
+
+    Remove unnecessary optimizations
+    
+     * These code paths are rarely used, and the code functions
+       without these equality checks, since we dup before free
+
+ library/adconn.c   |  3 ---
+ library/adenroll.c | 13 -------------
+ library/adutil.c   |  6 ------
+ 3 files changed, 22 deletions(-)
+
+commit a101e0ff822aae3e1670ea8bd87eb33657058d0e
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-25
+
+    Add more diagnostics to enrollment process
+
+ library/adenroll.c | 43 +++++++++++++++++++++++++++++++++----------
+ 1 file changed, 33 insertions(+), 10 deletions(-)
+
+commit 74457dc32bdab1e0d338cd7f30294e5ac4135af3
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-25
+
+    Add support for specifying the domain server explicitly
+    
+     * Also detect which server was connected to
+
+ library/adconn.c  | 40 ++++++++++++++++++++++++++++++++++++++++
+ library/adconn.h  |  5 +++++
+ tools/ad-enroll.c |  9 +++++++--
+ 3 files changed, 52 insertions(+), 2 deletions(-)
+
+commit 833c0493ff598915da4203f9b4670e1ab2f13ca6
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-25
+
+    Setup the host account password to not expire
+
+ library/adenroll.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 0fc3076de10e15cdca4f18c98375eac864cd3db7
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-25
+
+    Correctly determine which salt to use for keytab
+
+ library/Makefile.am |   1 +
+ library/adenroll.c  | 214 ++++++++++++++++++++++++-------------------
+ library/adkrb5.c    | 257 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/adprivate.h |  40 ++++++++
+ 4 files changed, 418 insertions(+), 94 deletions(-)
+
+commit 66b8683b73e3f8a2d63257bf3f6fdb8ea78386b4
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-24
+
+    Return correct error codes when admin account doesn't have right perms
+    
+     * We fudge it a bit when creating the computer account as it's
+       tough to get AD to return a good error code here.
+
+ library/adenroll.c | 33 +++++++++++++++++++++++++++------
+ 1 file changed, 27 insertions(+), 6 deletions(-)
+
+commit 7d80d041b17514ea18f7a0ad894a1694c87d05cf
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-24
+
+    Implement writing to the keytab
+
+ library/adenroll.c | 408 +++++++++++++++++++++++++++++++++++++++++++++++++----
+ library/adenroll.h |  16 ++-
+ tools/ad-enroll.c  |  11 +-
+ 3 files changed, 400 insertions(+), 35 deletions(-)
+
+commit 0c688c93a8c8f0a06f67c97208595e53d038d254
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-24
+
+    Retrieve the kvno from the computer account
+
+ library/adenroll.c | 96 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ library/adenroll.h |  5 +++
+ tools/ad-enroll.c  |  1 +
+ 3 files changed, 101 insertions(+), 1 deletion(-)
+
+commit 66fb648c6f6b6deb13c16e2cf239fdc96821b74f
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-24
+
+    Correctly format the unicodePwd sent to AD
+
+ library/adenroll.c | 62 ++++++++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 46 insertions(+), 16 deletions(-)
+
+commit 9417898a425736d92f93f81e8f5dfe7ed9737db3
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-24
+
+    Ask for an SSF from ldap bind that signifies encryption
+
+ library/adconn.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 9680b3f9a7f07567c3f6b7d7a6685adb33cfa9e1
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-24
+
+    Refactor DNS and LDAP support code into separate files
+    
+     * DNS SRV stuff into getsrvinfo.c and getsrvinfo.h
+     * LDAP helpers into adldap.c
+
+ library/Makefile.am  |   3 +-
+ library/adconn.c     |  29 +-----
+ library/addnssrv.c   | 262 --------------------------------------------------
+ library/adldap.c     | 203 +++++++++++++++++++++++++++++++++++++++
+ library/adprivate.h  |  15 ---
+ library/adutil.c     | 140 ---------------------------
+ library/getsrvinfo.c | 263 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/getsrvinfo.h |  42 ++++++++
+ 8 files changed, 511 insertions(+), 446 deletions(-)
+
+commit 2581fcc87bafe8ff026b543a5774a33779a373e2
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-14
+
+    Add a HACKING document explaining a few things
+
+ HACKING | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+commit 6919d5173a4f105333a23f42bc3c85746ce00871
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-14
+
+    Update the license to LGPL 2.1 and add headers to files
+
+ COPYING             | 218 ++++++++++++++++++++++++++++------------------------
+ library/adcli.h     |  22 ++++++
+ library/adconn.c    |  22 ++++++
+ library/adconn.h    |  22 ++++++
+ library/addnssrv.c  |  22 ++++++
+ library/adenroll.c  |  22 ++++++
+ library/adenroll.h  |  22 ++++++
+ library/adprivate.h |  22 ++++++
+ library/adutil.c    |  22 ++++++
+ library/adutil.h    |  22 ++++++
+ 10 files changed, 317 insertions(+), 99 deletions(-)
+
+commit a87c8c776c27b64eade210e388b805bf891d32fc
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-14
+
+    Rename to adcli
+
+ .gitignore               |  2 +-
+ Makefile.am              |  2 +-
+ README                   |  4 ++--
+ configure.ac             |  8 ++++----
+ library/Makefile.am      |  4 ++--
+ library/adcli-1.pc.in    | 13 +++++++++++++
+ library/libadcli-1.pc.in | 13 -------------
+ 7 files changed, 23 insertions(+), 23 deletions(-)
+
+commit d8983ad461db0d09a36f54e462dcb13dd06dd274
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Implemented adding/modifying computer accounts
+    
+     * Currently get a WILL_NOT_PERFORM from server so this needs further
+       modification
+
+ library/adconn.c    |  23 +---
+ library/adenroll.c  | 322 ++++++++++++++++++++++++++++++++++++++++++++++++++--
+ library/adenroll.h  |  13 +++
+ library/adprivate.h |  14 ++-
+ library/adutil.c    |  93 ++++++++++++++-
+ tools/ad-enroll.c   |   4 +
+ 6 files changed, 437 insertions(+), 32 deletions(-)
+
+commit 2edc904881c9c96f04cf9dc46f78f56005ce6395
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Lookup computer account and generate host password
+
+ library/adconn.c    |  64 ++--------
+ library/adconn.h    |   2 +
+ library/addnssrv.c  |   2 +-
+ library/adenroll.c  | 329 +++++++++++++++++++++++++++++++++++++---------------
+ library/adenroll.h  |  43 ++++---
+ library/adprivate.h |   7 ++
+ library/adutil.c    |  99 ++++++++++++++++
+ tools/ad-enroll.c   |   6 +-
+ 8 files changed, 387 insertions(+), 165 deletions(-)
+
+commit 3c4d9d7f7c216cc1f3f9a74e2c93e6f91a3a95a2
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Error code cleanup
+    
+     * Cleanup the error codes so they are more actionable.
+
+ library/adconn.c   | 44 +++++++++++++++++++++++++++-----------------
+ library/addnssrv.c |  5 +++--
+ library/adenroll.c | 12 ++++++------
+ library/adutil.c   | 16 +++++++++-------
+ library/adutil.h   | 41 ++++++++++++++++++++++++++++++++++++++---
+ 5 files changed, 83 insertions(+), 35 deletions(-)
+
+commit 47c47330e7c37a3be738e48ab1b3c39fee21c330
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Use preconditions instead of propogating insane state
+    
+     * Don't propogate memory errors, use preconditions instead
+     * These allow the process to keep functioning in the face of broken
+       calls or a broken system, but without guarantees like lack
+       of memory leaks or completely expected behavior.
+     * Sort of like a kernel non-fatal oops
+
+ library/adconn.c    | 235 +++++++++++++++++++++++++---------------------------
+ library/adconn.h    |  20 ++---
+ library/addnssrv.c  |   9 +-
+ library/adenroll.c  |  48 ++++++-----
+ library/adenroll.h  |   6 +-
+ library/adprivate.h |  92 ++++++++++++++------
+ library/adutil.c    |  82 ++++++++----------
+ library/adutil.h    |   3 +-
+ tools/ad-enroll.c   |  19 ++---
+ 9 files changed, 268 insertions(+), 246 deletions(-)
+
+commit f6d79ec882cc8df7c68a5295e66d9d0545833223
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Validate the computer OU
+
+ library/adenroll.c | 69 +++++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 53 insertions(+), 16 deletions(-)
+
+commit febe9767cc4c06eadf0b974c98942dc7a8356feb
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Lookup or validate the computer OU
+
+ library/adconn.c    |  92 +++++++++++++++++++++++--------
+ library/adconn.h    |   3 +
+ library/adenroll.c  | 156 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ library/adenroll.h  |   5 ++
+ library/adprivate.h |  17 +++++-
+ tools/ad-enroll.c   |   9 ++-
+ 6 files changed, 255 insertions(+), 27 deletions(-)
+
+commit 08512ced8a3c66ac65f1d6c6f0c916616a7692cf
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Lookup the naming context for AD
+    
+     * And differentiate between connection and authentication problems
+
+ library/adconn.c    | 211 ++++++++++++++++++++++++++++++++++++++--------------
+ library/adconn.h    |   2 +
+ library/adenroll.c  |   2 -
+ library/adprivate.h |   3 +
+ library/adutil.c    |  15 ++++
+ tools/ad-enroll.c   |   7 +-
+ 6 files changed, 179 insertions(+), 61 deletions(-)
+
+commit 349635595606341f55f96ec74c5946d2137f71b2
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Refactor connecting and enrolling separately.
+
+ library/Makefile.am |   8 +-
+ library/adcli.c     | 168 -----------
+ library/adcli.h     |  28 +-
+ library/adconn.c    | 853 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/adconn.h    |  78 +++++
+ library/adenroll.c  | 846 ++++-----------------------------------------------
+ library/adenroll.h  |  63 +---
+ library/adprivate.h |  25 +-
+ library/adutil.c    | 181 +++++++++++
+ library/adutil.h    |  22 ++
+ tools/ad-enroll.c   |  45 +--
+ 11 files changed, 1263 insertions(+), 1054 deletions(-)
+
+commit 5d2a95ce2c565eaa6b88bb08a7b889555cc3cacc
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-11
+
+    Connect to LDAP and authenticate using GSSAPI
+
+ configure.ac       |   4 +-
+ library/adcli.c    |   2 +
+ library/adcli.h    |   1 +
+ library/adenroll.c | 224 ++++++++++++++++++++++++++++++++++++++++-------------
+ library/adenroll.h |   3 -
+ tools/ad-enroll.c  |   5 +-
+ 6 files changed, 179 insertions(+), 60 deletions(-)
+
+commit 61f0b419c7c612543d8cbb104c82111ffe672e6a
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-10
+
+    Implement kinit and credential functionality
+
+ library/adcli.c     |   5 +-
+ library/adcli.h     |   9 +-
+ library/adenroll.c  | 325 ++++++++++++++++++++++++++++++++++++++++++++++++----
+ library/adenroll.h  |  71 ++++++++----
+ library/adprivate.h |   1 +
+ tools/ad-enroll.c   |  81 ++++++++++---
+ 6 files changed, 428 insertions(+), 64 deletions(-)
+
+commit 17df6535ed8faa55a5599b4a7b55d986eac83d1b
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-10
+
+    Discover realms and ldap urls
+
+ configure.ac        |   5 +-
+ library/Makefile.am |   2 +
+ library/adcli.c     | 121 +++++++++++++++++++++++++++
+ library/addnssrv.c  | 234 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ library/adenroll.c  | 193 ++++++++++++++++++++++++++++++++++++++++---
+ library/adenroll.h  |  13 +++
+ library/adprivate.h |  31 +++++++
+ tools/ad-enroll.c   |  17 +++-
+ 8 files changed, 601 insertions(+), 15 deletions(-)
+
+commit 6d5e074c271a300daa46a15a1cf638f306ff3d28
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-10
+
+    Complete lots of infrastructure
+    
+     * Add some basic arguments
+     * Resolve host fqdn, calculate domain name and netbios name
+
+ .gitignore               |   5 +-
+ Makefile.am              |  14 +-
+ Makefile.decl            |  14 ++
+ autogen.sh               |  13 --
+ configure.ac             |  27 +--
+ library/Makefile.am      |  22 ++-
+ library/adcli.c          |  42 +++++
+ library/adcli.h          |  25 +++
+ library/adenroll.c       | 353 +++++++++++++++++++++++++++++++++++++
+ library/adenroll.h       |  31 ++++
+ library/adprivate.h      |  18 ++
+ library/libadcli-1.pc.in |   2 +-
+ po/Makefile.in.in        | 444 -----------------------------------------------
+ po/POTFILES.in           |   1 -
+ po/Rules-quot            |  47 -----
+ po/boldquot.sed          |  10 --
+ po/en@boldquot.header    |  25 ---
+ po/en@quot.header        |  22 ---
+ po/insert-header.sin     |  23 ---
+ po/quot.sed              |   6 -
+ po/remove-potcdate.sin   |  19 --
+ tools/Makefile.am        |  16 ++
+ tools/ad-enroll.c        | 102 +++++++++++
+ 23 files changed, 641 insertions(+), 640 deletions(-)
+
+commit 64b1f6b692f9a69433c7458f8bc09bcae80c8821
+Author: Stef Walter <stefw@gnome.org>
+Date:   2012-05-09
+
+    Initial commit
+
+ .gitignore               |  41 ++++
+ AUTHORS                  |   1 +
+ COPYING                  | 482 +++++++++++++++++++++++++++++++++++++++++++++++
+ ChangeLog                |  31 +++
+ Makefile.am              |  47 +++++
+ NEWS                     |   2 +
+ README                   |   4 +
+ autogen.sh               |  32 ++++
+ configure.ac             | 256 +++++++++++++++++++++++++
+ doc/version.xml.in       |   1 +
+ library/Makefile.am      |  32 ++++
+ library/adenroll.c       |   0
+ library/libadcli-1.pc.in |  13 ++
+ po/Makefile.in.in        | 444 +++++++++++++++++++++++++++++++++++++++++++
+ po/POTFILES.in           |   1 +
+ po/Rules-quot            |  47 +++++
+ po/boldquot.sed          |  10 +
+ po/en@boldquot.header    |  25 +++
+ po/en@quot.header        |  22 +++
+ po/insert-header.sin     |  23 +++
+ po/quot.sed              |   6 +
+ po/remove-potcdate.sin   |  19 ++
+ 22 files changed, 1539 insertions(+)
