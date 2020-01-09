@@ -1,12 +1,23 @@
 Name:		adcli
 Version:	0.8.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Active Directory enrollment
 License:	LGPLv2+
 URL:		http://cgit.freedesktop.org/realmd/adcli
 Source0:	http://www.freedesktop.org/software/realmd/releases/adcli-%{version}.tar.gz
 
+Patch001:	0001-Fix-memory-leak-in-test_check_nt_time_string_lifetim.patch
+Patch002:	0002-library-add-_adcli_bin_sid_to_str.patch
+Patch003:	0003-library-add-_adcli_call_external_program.patch
+Patch004:	0004-library-add-_adcli_ldap_parse_sid.patch
+Patch005:	0005-library-add-lookup_domain_sid.patch
+Patch006:	0006-library-add-adcli_conn_get_domain_sid.patch
+Patch007:	0007-tools-add-option-add-samba-data.patch
+Patch008:	0008-tools-store-Samba-data-if-requested.patch
+Patch009:	0009-make-Samba-data-tool-configurable.patch
+
 BuildRequires:	intltool pkgconfig
+BuildRequires:	libtool
 BuildRequires:	gettext-devel
 BuildRequires:	krb5-devel
 BuildRequires:	openldap-devel
@@ -27,8 +38,18 @@ standard LDAP and Kerberos calls.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
+autoreconf --force --install --verbose
 %configure --disable-static --disable-silent-rules
 make %{?_smp_mflags}
 
@@ -52,6 +73,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %doc %{_mandir}/*/*
 
 %changelog
+* Fri Feb 09 2018 Sumit Bose <sbose@redhat.com> - 0.8.1-2
+- Add support for samba [#1485417]
+
 * Wed Jan 20 2016 Sumit Bose <sbose@redhat.com> - 0.8.1-1
 - Update to upstream release 0.8.1
 - Add missing - in adcli man page  [#1296971]

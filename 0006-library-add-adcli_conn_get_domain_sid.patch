@@ -1,0 +1,61 @@
+From 1e6ef99ed4cb5e65e89c916c04bc9cb0cc54dc15 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Tue, 30 Jan 2018 18:23:03 +0100
+Subject: [PATCH 6/9] library: add adcli_conn_get_domain_sid()
+
+https://bugs.freedesktop.org/show_bug.cgi?id=100118
+
+Reviewed-by: Jakub Hrozek <jhrozek@redhat.com>
+---
+ library/adconn.c | 8 ++++++++
+ library/adconn.h | 2 ++
+ tools/computer.c | 1 +
+ 3 files changed, 11 insertions(+)
+
+diff --git a/library/adconn.c b/library/adconn.c
+index 4ff60d7..5e7ac2c 100644
+--- a/library/adconn.c
++++ b/library/adconn.c
+@@ -1355,6 +1355,14 @@ adcli_conn_get_domain_short (adcli_conn *conn)
+ 	return conn->domain_short;
+ }
+ 
++const char *
++adcli_conn_get_domain_sid (adcli_conn *conn)
++{
++	return_val_if_fail (conn != NULL, NULL);
++	return conn->domain_sid;
++}
++
++
+ LDAP *
+ adcli_conn_get_ldap_connection (adcli_conn *conn)
+ {
+diff --git a/library/adconn.h b/library/adconn.h
+index a0cb1f8..28e7509 100644
+--- a/library/adconn.h
++++ b/library/adconn.h
+@@ -91,6 +91,8 @@ void                adcli_conn_set_domain_controller (adcli_conn *conn,
+ 
+ const char *        adcli_conn_get_domain_short      (adcli_conn *conn);
+ 
++const char *        adcli_conn_get_domain_sid        (adcli_conn *conn);
++
+ LDAP *              adcli_conn_get_ldap_connection   (adcli_conn *conn);
+ 
+ krb5_context        adcli_conn_get_krb5_context      (adcli_conn *conn);
+diff --git a/tools/computer.c b/tools/computer.c
+index d8a58c9..a3d0f03 100644
+--- a/tools/computer.c
++++ b/tools/computer.c
+@@ -43,6 +43,7 @@ dump_details (adcli_conn *conn,
+ 	printf ("domain-realm = %s\n", adcli_conn_get_domain_realm (conn));
+ 	printf ("domain-controller = %s\n", adcli_conn_get_domain_controller (conn));
+ 	printf ("domain-short = %s\n", adcli_conn_get_domain_short (conn));
++	printf ("domain-SID = %s\n", adcli_conn_get_domain_sid (conn));
+ 	printf ("naming-context = %s\n", adcli_conn_get_default_naming_context (conn));
+ 	printf ("domain-ou = %s\n", adcli_enroll_get_domain_ou (enroll));
+ 
+-- 
+2.14.3
+

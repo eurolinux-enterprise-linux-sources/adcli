@@ -1,0 +1,142 @@
+From 46ec636b561418d9ec9dc20c034f4fb5c9e39a36 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Tue, 30 Jan 2018 14:46:00 +0100
+Subject: [PATCH 7/9] tools: add option --add-samba-data
+
+https://bugs.freedesktop.org/show_bug.cgi?id=100118
+
+Reviewed-by: Jakub Hrozek <jhrozek@redhat.com>
+---
+ doc/adcli.xml      | 30 ++++++++++++++++++++++++++++++
+ library/adenroll.h |  1 +
+ tools/computer.c   | 12 ++++++++++++
+ 3 files changed, 43 insertions(+)
+
+diff --git a/doc/adcli.xml b/doc/adcli.xml
+index e18ba5d..a336eac 100644
+--- a/doc/adcli.xml
++++ b/doc/adcli.xml
+@@ -288,6 +288,21 @@ Password for Administrator:
+ 			machine account password. This is output in a format that should
+ 			be both human and machine readable.</para></listitem>
+ 		</varlistentry>
++		<varlistentry>
++			<term><option>--add-samba-data</option></term>
++			<listitem><para>After a successful join add the domain
++			SID and the machine account password to the Samba
++			specific databases by calling Samba's
++			<command>net</command> utility.</para>
++
++			<para>Please note that Samba's <command>net</command>
++			requires some settings in <filename>smb.conf</filename>
++			to create the database entries correctly. Most
++			important here is currently the
++			<option>workgroup</option> option, see
++			<citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry>
++			for details.</para></listitem>
++		</varlistentry>
+ 	</variablelist>
+ 
+ </refsect1>
+@@ -378,6 +393,21 @@ $ adcli update --login-ccache=/tmp/krbcc_123
+ 			about join operation. This is output in a format that should
+ 			be both human and machine readable.</para></listitem>
+ 		</varlistentry>
++		<varlistentry>
++			<term><option>--add-samba-data</option></term>
++			<listitem><para>After a successful join add the domain
++			SID and the machine account password to the Samba
++			specific databases by calling Samba's
++			<command>net</command> utility.</para>
++
++			<para>Please note that Samba's <command>net</command>
++			requires some settings in <filename>smb.conf</filename>
++			to create the database entries correctly. Most
++			important here is currently the
++			<option>workgroup</option> option, see
++			<citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry>
++			for details.</para></listitem>
++		</varlistentry>
+ 	</variablelist>
+ 
+ </refsect1>
+diff --git a/library/adenroll.h b/library/adenroll.h
+index 9a107ab..32c9764 100644
+--- a/library/adenroll.h
++++ b/library/adenroll.h
+@@ -30,6 +30,7 @@ typedef enum {
+ 	ADCLI_ENROLL_NO_KEYTAB = 1 << 1,
+ 	ADCLI_ENROLL_ALLOW_OVERWRITE = 1 << 2,
+ 	ADCLI_ENROLL_PASSWORD_VALID = 1 << 3,
++	ADCLI_ENROLL_ADD_SAMBA_DATA = 1 << 3,
+ } adcli_enroll_flags;
+ 
+ typedef struct _adcli_enroll adcli_enroll;
+diff --git a/tools/computer.c b/tools/computer.c
+index a3d0f03..fc646f2 100644
+--- a/tools/computer.c
++++ b/tools/computer.c
+@@ -106,6 +106,7 @@ typedef enum {
+ 	opt_os_service_pack,
+ 	opt_user_principal,
+ 	opt_computer_password_lifetime,
++	opt_add_samba_data,
+ } Option;
+ 
+ static adcli_tool_desc common_usages[] = {
+@@ -142,6 +143,8 @@ static adcli_tool_desc common_usages[] = {
+ 	                     "a successful join" },
+ 	{ opt_show_password, "show computer account password after after a\n"
+ 	                     "successful join" },
++	{ opt_add_samba_data, "add domain SID and computer account password\n"
++	                      "to the Samba specific configuration database" },
+ 	{ opt_verbose, "show verbose progress and failure messages", },
+ 	{ 0 },
+ };
+@@ -269,6 +272,7 @@ parse_option (Option opt,
+ 	case opt_show_details:
+ 	case opt_show_password:
+ 	case opt_one_time_password:
++	case opt_add_samba_data:
+ 		assert (0 && "not reached");
+ 		break;
+ 	}
+@@ -326,6 +330,7 @@ adcli_tool_computer_join (adcli_conn *conn,
+ 		{ "user-principal", optional_argument, NULL, opt_user_principal },
+ 		{ "show-details", no_argument, NULL, opt_show_details },
+ 		{ "show-password", no_argument, NULL, opt_show_password },
++		{ "add-samba-data", no_argument, NULL, opt_add_samba_data },
+ 		{ "verbose", no_argument, NULL, opt_verbose },
+ 		{ "help", no_argument, NULL, 'h' },
+ 		{ 0 },
+@@ -352,6 +357,9 @@ adcli_tool_computer_join (adcli_conn *conn,
+ 		case opt_show_password:
+ 			show_password = 1;
+ 			break;
++		case opt_add_samba_data:
++			flags |= ADCLI_ENROLL_ADD_SAMBA_DATA;
++			break;
+ 		case 'h':
+ 		case '?':
+ 		case ':':
+@@ -425,6 +433,7 @@ adcli_tool_computer_update (adcli_conn *conn,
+ 		{ "computer-password-lifetime", optional_argument, NULL, opt_computer_password_lifetime },
+ 		{ "show-details", no_argument, NULL, opt_show_details },
+ 		{ "show-password", no_argument, NULL, opt_show_password },
++		{ "add-samba-data", no_argument, NULL, opt_add_samba_data },
+ 		{ "verbose", no_argument, NULL, opt_verbose },
+ 		{ "help", no_argument, NULL, 'h' },
+ 		{ 0 },
+@@ -447,6 +456,9 @@ adcli_tool_computer_update (adcli_conn *conn,
+ 		case opt_show_password:
+ 			show_password = 1;
+ 			break;
++		case opt_add_samba_data:
++			flags |= ADCLI_ENROLL_ADD_SAMBA_DATA;
++			break;
+ 		case 'h':
+ 		case '?':
+ 		case ':':
+-- 
+2.14.3
+

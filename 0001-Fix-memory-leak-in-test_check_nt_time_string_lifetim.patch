@@ -1,0 +1,28 @@
+From 93ea2aa8b500671209a7e746281214ca2e70fc4a Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Tue, 30 Jan 2018 14:39:46 +0100
+Subject: [PATCH 1/9] Fix memory leak in test_check_nt_time_string_lifetime
+
+The test added with 650e5d33ef31437a049fb454ad3dc5457c56abe7 introduced
+a small memory leak.
+
+Reviewed-by: Jakub Hrozek <jhrozek@redhat.com>
+---
+ library/adutil.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/library/adutil.c b/library/adutil.c
+index 21ccd27..cd40f45 100644
+--- a/library/adutil.c
++++ b/library/adutil.c
+@@ -501,6 +501,7 @@ test_check_nt_time_string_lifetime (void)
+ 			  (time (NULL) + 10 + AD_TO_UNIX_TIME_CONST) * 1000 * 1000 *10)
+ 		!= -1);
+ 	assert (!_adcli_check_nt_time_string_lifetime (time_str, 0));
++	free (time_str);
+ 
+ 	/* This test will fail some time after 2200AD as a reminder to reflect
+ 	 * why adcli is still needed. */
+-- 
+2.14.3
+
