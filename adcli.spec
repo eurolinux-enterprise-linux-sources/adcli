@@ -1,6 +1,6 @@
 Name:		adcli
 Version:	0.8.1
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Active Directory enrollment
 License:	LGPLv2+
 URL:		http://cgit.freedesktop.org/realmd/adcli
@@ -15,6 +15,8 @@ Patch006:	0006-library-add-adcli_conn_get_domain_sid.patch
 Patch007:	0007-tools-add-option-add-samba-data.patch
 Patch008:	0008-tools-store-Samba-data-if-requested.patch
 Patch009:	0009-make-Samba-data-tool-configurable.patch
+Patch0010:	0001-fix-typo-in-flag-value.patch
+Patch0011:	0001-_adcli_call_external_program-silence-noisy-debug-mes.patch
 
 BuildRequires:	intltool pkgconfig
 BuildRequires:	libtool
@@ -47,6 +49,8 @@ standard LDAP and Kerberos calls.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 autoreconf --force --install --verbose
@@ -73,6 +77,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %doc %{_mandir}/*/*
 
 %changelog
+* Wed Oct 16 2019 Sumit Bose <sbose@redhat.com> - 0.8.1-3
+- Fix Samba support [#1608107]
+
 * Fri Feb 09 2018 Sumit Bose <sbose@redhat.com> - 0.8.1-2
 - Add support for samba [#1485417]
 

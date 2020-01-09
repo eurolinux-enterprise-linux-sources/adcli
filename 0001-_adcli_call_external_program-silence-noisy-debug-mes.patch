@@ -1,0 +1,25 @@
+From 8cc4ef1cae7d4d753f2cf9aeb8021dd96cb75d36 Mon Sep 17 00:00:00 2001
+From: Sumit Bose <sbose@redhat.com>
+Date: Wed, 8 Aug 2018 12:17:18 +0200
+Subject: [PATCH] _adcli_call_external_program: silence noisy debug message
+
+---
+ library/adutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/library/adutil.c b/library/adutil.c
+index 6334b52..17d2caa 100644
+--- a/library/adutil.c
++++ b/library/adutil.c
+@@ -672,7 +672,7 @@ done:
+ 		if (wret == -1) {
+ 			_adcli_err ("No sure what happend to net command.");
+ 		} else {
+-			if (WIFEXITED (status)) {
++			if (WIFEXITED (status) && WEXITSTATUS (status) != 0) {
+ 				_adcli_err ("net command failed with %d.",
+ 				            WEXITSTATUS (status));
+ 			}
+-- 
+2.17.1
+
